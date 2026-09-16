@@ -62,6 +62,8 @@ window.BL = (function(){
     else if(f.real&&f.last==='Shalauddin') f.codes[0]='BL-2026-0002';
     else if(f.flag==='decision') f.codes=[null];
   });
+  families.forEach(f=>{ if(f.real&&f.last==='Shalauddin') f.school='Stamford Charter School for Excellence';
+    if(f.real&&f.first==='Mia') f.school='Dolan Middle School'; });
   seq=3;
   families.filter(f=>!f.codes[0]&&f.flag!=='decision'&&!f.real).slice(0,7).forEach(f=>{f.codes[0]='BL-2026-'+String(seq++).padStart(4,'0');});
   const TEST=[{last:'Test',first:'Row (ours)',code:'BL-2026-0008',dupe:true},{last:'Test',first:'Row (ours)',code:'BL-2026-0009',dupe:true}];
