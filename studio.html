@@ -5,7 +5,7 @@
 </head><body class="console">
 
 <aside class="rail">
-  <div class="brandplate"><img src="assets/bl-logo.png" alt="Beyond Limits Academics"></div>
+  <div class="brandplate"><img src="assets/bl-logo-176.png" alt="Beyond Limits Academics"></div>
   <div class="who"><b>Andy Sklover</b><span>PROGRAM DIRECTOR &middot; FULL ACCESS</span></div>
 
   <div class="rgrp">Today</div>
@@ -29,7 +29,7 @@
   <a class="rnav" data-v="insights"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Insights</a>
   <a class="rnav" data-v="settings"><svg class="ic" viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-2.9 1.2V21a2 2 0 11-4 0v-.1A1.7 1.7 0 006 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.7 1.7 0 003 13.7H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 6L4.5 5.9a2 2 0 112.8-2.8l.1.1A1.7 1.7 0 0010 3.1V3a2 2 0 114 0v.1a1.7 1.7 0 002.9 1.2l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 001.2 2.9H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Settings</a>
 
-  <div class="rail-foot"><b>Data ownership</b>Roster &amp; script sit on a personal Google account.</div>
+  <div class="rail-foot"><b>Data ownership</b>Roster &amp; script on a personal Google account.</div>
 </aside>
 
 <div class="main">
@@ -56,7 +56,8 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;',
 const codeOf=f=>(f.codes&&f.codes[0])||null;
 const initials=f=>f.first[0]+f.last[0];
 const progDots=f=>f.progs.map(p=>'<span class="pdot pd-'+p+'"></span>').join('');
-let STATE={filter:'all',q:'',sel:null,codesIssued:false,seg:['all'],lang:'es',merged:false};
+let STATE={filter:'all',q:'',sel:null,codesIssued:false,seg:['all'],lang:'en',merged:false};
+const DRAFTS={};
 /* the only place a code is minted. Sequence is kept apart from the display counters. */
 let NEXT_SEQ=parseInt((S.nextCode||'BL-2026-0010').slice(-4),10);
 function mintCode(f){ f.codes=[ 'BL-2026-'+String(NEXT_SEQ++).padStart(4,'0') ]; }
@@ -95,7 +96,8 @@ function vHome(){
           <div style="background:rgba(255,255,255,.08);border-radius:11px;padding:12px">
             <div style="font-family:var(--f-d);font-size:26px">${S.families}</div><div style="font-size:11.4px;color:#9FB6DA">ACTIVE FAMILIES</div></div>
           <div style="background:rgba(255,255,255,.08);border-radius:11px;padding:12px">
-            <div style="font-family:var(--f-d);font-size:26px">${S.removed}</div><div style="font-size:11.4px;color:#9FB6DA">REMOVED BY ANDY</div></div>
+            <div style="font-family:var(--f-d);font-size:26px">${S.removed}</div><div style="font-size:11.4px;color:#9FB6DA">FAMILIES REMOVED</div>
+            <div style="font-size:10.6px;color:#7E93B4;margin-top:4px">retired from ${S.originallyListed} originally listed</div></div>
         </div>
       </div>
     </div>
@@ -196,7 +198,7 @@ function vRecords(){
       <div class="card pad">
         <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63;text-transform:uppercase">Code engine</div>
         <div style="display:flex;align-items:baseline;gap:9px;margin:10px 0 4px">
-          <span style="font-family:var(--f-d);font-size:31px" id="covNum">${cov}%</span>
+          <span style="font-family:var(--f-d);font-size:22px;color:#5B6472" id="covNum">${cov}%</span>
           <span style="font-size:12.4px;color:var(--muted)">of families coded</span>
         </div>
         <div class="meter gold" style="height:9px"><i id="covBar2" style="width:${cov}%"></i></div>
@@ -205,6 +207,7 @@ function vRecords(){
         <div class="kv"><i>Program stored in</i><b>its own column</b></div>
         <div class="kv"><i>Codes changed on transfer</i><b style="color:var(--green)">never</b></div>
         <button class="btn btn-navy btn-sm" style="width:100%;justify-content:center;margin-top:15px" id="bulkIssue2">Back-fill the ${S.uncoded} missing codes</button>
+        <div style="font-size:10.8px;color:var(--muted);margin-top:7px">Demo build — issued codes reset when the page reloads.</div>
         <div style="font-size:11.6px;color:var(--muted);margin-top:9px;line-height:1.5">One family, one row, one code — however many programs they join and however many agreements they sign.
           The list is the only place a code is ever minted.</div>
       </div>
@@ -252,7 +255,7 @@ function vReview(){
   return `
   <div class="grid2" style="align-items:start">
     ${card(F.find(x=>x.first==='Annabella'),[['Keep','Main 8 Nov 2024 &middot; no code issued &middot; household phone 203&#8226;&#8226;&#8226; &middot; grade 5','Keep the Main copy'],
-      ['Keep','SCSE 5 Dec 2024 &middot; BLA-2026-0001 &middot; same DOB, same address','Keep the SCSE copy']])}
+      ['Keep','SCSE 5 Dec 2024 &middot; BLA-2026-0001 (old format) &middot; same DOB, same address','Keep the SCSE copy']])}
     ${card(F.find(x=>x.first==='Anthony'),[['Keep','Main 2 Jan 2025 &middot; then Main again 4 Sep 2025 &middot; grade 9','Keep the second Main copy'],
       ['Keep','Starfish row copied from the second submission &middot; never actually signed','Keep the Starfish row']])}
   </div>
@@ -327,17 +330,23 @@ function openFam(id){
 function closeDrawer(){document.getElementById('drawer').classList.remove('on');STATE.sel=null;document.querySelectorAll('.ledger tr.sel').forEach(r=>r.classList.remove('sel'));}
 
 /* ---------------- 04 · MESSAGING ---------------- */
-const SEGMENTS=[['all','Every family',113,'All four tracks'],['main','Main',110,'The comprehensive sheet'],
- ['horizons','Horizons',21,'Saturday labs'],['scse','SCSE',17,'Charter school families'],
- ['starfish','Starfish',4,'Pasted rows — no agreement signed'],['bffs','BFFS',13,'Unmapped track'],
- ['missed2','Missed 2+ sessions',7,'Recovery rule'],['uncoded','No code yet',105,'Cannot go to ParentSquare']];
+/* every audience size is derived from the one roster — selections union, they never sum */
+const SEGMENTS=[['all','Every family',BL.SEG_COUNT.all,'All four tracks'],
+ ['main','Main',BL.perProgram.find(p=>p.id==='main').families,'The comprehensive sheet'],
+ ['horizons','Horizons',BL.perProgram.find(p=>p.id==='horizons').families,'Saturday labs'],
+ ['scse','SCSE',BL.perProgram.find(p=>p.id==='scse').families,'Charter school families'],
+ ['starfish','Starfish',BL.perProgram.find(p=>p.id==='starfish').families,'Pasted rows — no agreement signed'],
+ ['bffs','BFFS',BL.perProgram.find(p=>p.id==='bffs').families,'Unmapped track'],
+ ['missed2','Missed 2+ sessions',BL.SEG_COUNT.missed2,'Recovery rule'],
+ ['uncoded','No code yet',BL.SEG_COUNT.uncoded,'Cannot go to ParentSquare']];
+function segCount(keys){ return BL.audience(keys); }
 const MSG_TXT={
  es:'Hola familia de Beyond Limits: Remind dejará de funcionar este mes. Sus mensajes ahora llegan por ParentSquare — no necesita descargar nada ni crear una contraseña. El código de su familia es {CODE}. Responda a este mensaje si tiene preguntas. — Andy',
  en:'Hello Beyond Limits family: Remind shuts down this month. Your messages move to ParentSquare — nothing to download, no password to remember. Your family code is {CODE}. Reply here with any questions. — Andy',
  pt:'Olá família Beyond Limits: o Remind será descontinuado este mês. Suas mensagens passam para o ParentSquare — não é preciso baixar nada. O código da sua família é {CODE}. — Andy',
  ht:'Bonjou fanmi Beyond Limits: Remind ap fèmen mwa sa a. Mesaj ou yo ap pase nan ParentSquare — pa gen anyen pou telechaje. Kòd fanmi w se {CODE}. — Andy'};
 function vMessages(){
-  const segs=STATE.seg, n=segs.reduce((a,s)=>a+(SEGMENTS.find(x=>x[0]===s)||[0,0,0])[2],0);
+  const segs=STATE.seg, n=segCount(segs);
   return `
   <div style="display:grid;grid-template-columns:290px 1fr 380px;gap:18px;align-items:start" class="msgwrap">
     <div class="card">
@@ -790,18 +799,18 @@ function vInsights(){
           .map(r=>`<div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted var(--line);padding-bottom:8px">
             <span style="color:#4A5568">${r[0]}</span><b>${r[1]}</b></div>`).join('')}
       </div>
-      <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;margin-top:14px">Export the funder summary</button>
+      <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;margin-top:14px" id="funderCsv">Export the funder summary</button>
     </div>
   </div>
   <div class="grid2">
     <div class="card">
       <div class="card-h"><h3 style="font-size:16px">Equity of access</h3><span class="mono" style="margin-left:auto">by track</span></div>
       <div class="pad" style="display:grid;gap:14px">
-        ${[['Main',110,94],['Horizons',21,81],['SCSE',17,76],['Starfish',4,0],['BFFS',13,0]]
-          .map(r=>`<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
-            <span>${r[0]}</span><span style="color:var(--muted)"><b style="color:var(--ink)">${r[1]}</b> families &middot; ${r[2]}% coded</span></div>
-            ${meter(r[2], r[2]>85?'g':r[2]>50?'':'a')}</div>`).join('')}
-        <div style="font-size:12.2px;color:var(--muted)">Starfish and BFFS sit at zero — those two tracks are where the roster breaks down today.</div>
+        ${BL.perProgram.map(p=>{const pct=Math.round(p.coded/p.families*100);
+          return `<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+            <span>${p.name}</span><span style="color:var(--muted)"><b style="color:var(--ink)">${p.families}</b> families &middot; ${p.coded} coded</span></div>
+            ${meter(Math.max(pct,2), pct>60?'g':pct>0?'':'a')}</div>`;}).join('')}
+        <div style="font-size:12.2px;color:var(--muted)">A family can belong to more than one track, so these coded counts can overlap. Bars show the share of each track already carrying a code. Starfish and BFFS sit at zero — those two tracks are where the roster breaks down today.</div>
       </div>
     </div>
     <div class="card">
@@ -832,8 +841,8 @@ function vSettings(){
           Triggers do not travel with a file — they have to be recreated afterwards or code generation silently stops.
           A silent stop is worse than a loud failure.</div>
         <div style="display:flex;gap:9px;margin-top:15px;flex-wrap:wrap">
-          <button class="btn btn-navy btn-sm">Start the ownership transfer</button>
-          <button class="btn btn-ghost btn-sm">Schedule a trigger health check</button>
+          <button class="btn btn-navy btn-sm" id="ownBtn">Start the ownership transfer</button>
+          <button class="btn btn-ghost btn-sm" id="trigBtn">Schedule a trigger health check</button>
         </div>
       </div>
 
@@ -890,6 +899,9 @@ const TITLES={home:['Command center','Wednesday, 16 September 2026 &middot; 4 se
   export:['ParentSquare sync','Your code is the identifier'],insights:['Insights','Grant-ready numbers'],settings:['Settings','Automations, defaults and ownership']};
 function go(v){
   if(!VIEWS[v])v='home'; STATE.view=v;
+  closeDrawer();
+  const dec=F.filter(f=>f.flag==='decision'&&!STATE.merged).length;
+  const rb=document.getElementById('b-review'); if(rb){rb.textContent=dec; rb.style.display=dec?'':'none';}
   document.getElementById('view').innerHTML=VIEWS[v]();
   document.getElementById('crumb').innerHTML=TITLES[v][0]+'<small>'+TITLES[v][1]+'</small>';
   document.querySelectorAll('.rnav').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
@@ -902,11 +914,24 @@ function wire(v){
   document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{STATE.filter=b.dataset.f;go('records');});
   document.querySelectorAll('[data-seg]').forEach(s=>s.onclick=()=>{const k=s.dataset.seg;
     STATE.seg=STATE.seg.includes(k)?STATE.seg.filter(x=>x!==k):STATE.seg.concat([k]);
-    if(!STATE.seg.length)STATE.seg=['all']; go('messages');});
-  document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{STATE.lang=b.dataset.lang;
-    document.getElementById('msgBody').value=MSG_TXT[STATE.lang];
-    document.getElementById('phoneTxt').innerHTML=MSG_TXT[STATE.lang].replace('{CODE}','BL-2026-0113');});
-  document.querySelectorAll('[data-merge]').forEach(b=>b.onclick=()=>{b.textContent='Merged — both agreements kept';b.classList.add('btn-gold');STATE.merged=true;});
+    go('messages');});
+  document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{
+    const box=document.getElementById('msgBody');
+    DRAFTS[STATE.lang]=box.value;                     /* keep whatever you typed, per language */
+    STATE.lang=b.dataset.lang;
+    DRAFTS[STATE.lang]=(DRAFTS[STATE.lang]&&DRAFTS[STATE.lang].trim())||MSG_TXT[STATE.lang];
+    box.value=DRAFTS[STATE.lang];
+    document.getElementById('phoneTxt').innerHTML=DRAFTS[STATE.lang].replace('{CODE}','BL-2026-0113');
+    document.querySelectorAll('#langTabs button').forEach(x=>x.classList.toggle('on',x.dataset.lang===STATE.lang));});
+  document.querySelectorAll('[data-merge]').forEach(b=>b.onclick=()=>{
+    b.textContent='Merged — both agreements kept';b.classList.add('btn-gold');STATE.merged=true;
+    F.filter(f=>f.flag==='decision').forEach(f=>{f.flag='none'; if(!codeOf(f)){f.codes=['BL-2026-'+String(9+1).padStart(4,'0')+''];}
+      f.codes=[codeOf(f)];});
+    const rb=document.getElementById('b-review'); if(rb){rb.textContent='0';rb.style.display='none';}
+    const hd=document.querySelector('.card-h h3'); const note=document.createElement('div');
+    note.style.cssText='font-size:12.6px;color:var(--green);margin-top:10px';
+    note.textContent='Both decisions recorded. Each family now carries one identity and both signed agreements stay on file.';
+    document.querySelector('#view .grid2').after(note);});
   document.querySelectorAll('.tog').forEach(t=>t.onclick=()=>t.classList.toggle('on'));
   const b1=document.getElementById('bulkIssue'),b2=document.getElementById('bulkIssue2');
   const run=()=>{
@@ -935,6 +960,11 @@ function wire(v){
     t.innerHTML=''; let i=0;
     const t2=setInterval(()=>{if(i>=lines.length){clearInterval(t2);return;}
       t.innerHTML+='<div class="'+lines[i][0]+'">'+lines[i][1]+'</div>'; i++; t.scrollTop=t.scrollHeight;},260);};
+  const fu=document.getElementById('funderCsv');
+  if(fu)fu.onclick=()=>{ const rows=['metric,value','families,'+S.families,'codes_issued,'+S.coded,
+      'sessions_delivered,1284','tutor_hours,147','attendance_rate,0.93','avg_sessions_per_scholar,11.3'];
+    const blob=new Blob([rows.join('\n')],{type:'text/csv'}); const a=document.createElement('a');
+    a.href=URL.createObjectURL(blob); a.download='bl-funder-summary.csv'; a.click(); };
   const d=document.getElementById('dlCsv'); if(d)d.onclick=()=>{downloadCSV(F);
     document.getElementById('dlOut').textContent='Saved bl-families-parentsquare.csv — '+F.length+' rows.';};
   const rn=document.getElementById('runRules');
@@ -942,6 +972,17 @@ function wire(v){
     document.getElementById('ruleOut').innerHTML='<div style="padding:13px;border-radius:11px;background:var(--green-050);color:#2C5B45">'+
       '<b>Check complete.</b> '+win+' sessions reviewed, threshold '+thr+'. 7 families matched: 5 texts queued in 4 languages, '+
       '1 voice call, 1 tutor check-in. Nothing sent twice.</div>';};
+  const own=document.getElementById('ownBtn'), trig=document.getElementById('trigBtn');
+  if(own)own.onclick=()=>{own.textContent='Transfer initiated — 3 steps outstanding';own.classList.add('btn-gold');};
+  if(trig)trig.onclick=()=>{trig.textContent='Health check booked — Friday 8:00am';trig.classList.add('btn-gold');};
+  const sm=document.getElementById('sendMsg');
+  if(sm)sm.onclick=()=>{const n2=segCount(STATE.seg);
+    const out=document.getElementById('sendOut');
+    out.innerHTML='<div style="padding:13px;border-radius:11px;background:var(--green-050);color:#2C5B45"><b>Sent to '+n2+' families</b> in 4 languages. Texts queued now, email and in-app delivered. Nothing was sent twice.</div>';
+    BL.MESSAGES.unshift({t:(document.getElementById('msgBody').value.split(':')[0]||'Message').slice(0,60)+'…',when:'Just now',
+      seg:STATE.seg.map(k=>(SEGMENTS.find(x=>x[0]===k)||[k])[1]).join(' + '),ch:'Text + Email',langs:4,read:null,rs:null,status:'sent'});};
+  const sc2=document.getElementById('schedMsg');
+  if(sc2)sc2.onclick=()=>{document.getElementById('sendOut').innerHTML='<div style="padding:13px;border-radius:11px;background:var(--gold-050);color:#7A4E00"><b>Scheduled for 9:00am.</b> It will not send twice, even if the page is closed.</div>';};
   const ck=document.getElementById('ckBtn');
   if(ck)ck.onclick=()=>{const val=document.getElementById('ckin').value.trim();
     const f=F.find(x=>(codeOf(x)||'').endsWith(val))||F.find(x=>(codeOf(x)||'').includes(val));
@@ -980,6 +1021,7 @@ q.addEventListener('input',()=>{const v=q.value;const res=BL.find(v);
   sr.querySelectorAll('.s').forEach(s=>s.onclick=()=>{sr.classList.remove('on');q.value='';openFam(s.dataset.fam);
     go(['home','records','review','messages','attendance','onboarding','forms','calendar','directory','tutors','export','insights','settings'].includes(STATE.view)?STATE.view:'records');});
 });
+q.addEventListener('keydown',e=>{ if(e.key==='Enter'){ STATE.q=q.value.trim(); sr.classList.remove('on'); go('records'); }});
 document.addEventListener('click',e=>{if(!e.target.closest('.search'))sr.classList.remove('on');});
 document.querySelectorAll('.rnav').forEach(a=>a.onclick=()=>go(a.dataset.v));
 document.getElementById('newFamily').onclick=()=>go('onboarding');

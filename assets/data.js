@@ -42,7 +42,8 @@ window.BL = (function(){
     o.phone=o.phone||('203'+String(200+Math.floor(rnd()*780))+String(1000+Math.floor(rnd()*8999)));
     o.email=o.email||((o.first+'.'+o.last).toLowerCase().replace(/[^a-z.]/g,'')+'@gmail.com');
     o.school=o.school||pick(SCHOOLS);
-    if(o.sessions===undefined){o.sessions=8+Math.floor(rnd()*30); o.missed=Math.floor(rnd()*5); }
+    if(o.sessions===undefined){o.sessions=8+Math.floor(rnd()*30);
+      const r=rnd(); o.missed = r<.46?0 : r<.76?1 : r<.88?2 : r<.95?3 : r<.985?4 : 5; }
     o.lastSeen=o.lastSeen||o.sessions-o.missed; families.push(o); return o;}
   REAL.forEach(r=>{const f=mk({last:r.last,first:r.first,dob:r.dob,grade:r.grade,progs:r.progs,progs:r.progs,codes:r.codes,
     flag:r.flag,note:r.note,real:true,sessions:12+Math.floor(rnd()*22),missed:r.flag==='decision'?4:Math.floor(rnd()*3)});
@@ -82,15 +83,6 @@ window.BL = (function(){
     {t:'SCSE family night — dinner provided, translators on site', when:'Draft', seg:'SCSE (17)', ch:'Text + Email', langs:3, read:null, rs:null, status:'draft'}
   ];
 
-  /* ---- attendance ---- */
-  const ATT=[
-    {sch:'Lopez, Anthony',code:'—',tutor:'Maya R.',missed:4,of:12,streak:0,rule:'Escalated — tutor check-in',state:'red'},
-    {sch:'Shalauddin, Ethan',code:'BL-2026-0002',tutor:'Priya N.',missed:2,of:14,streak:3,rule:'Text sent 9:00am',state:'amber'},
-    {sch:'Rojas, Annabella',code:'BL-2026-0001',tutor:'Daniel O.',missed:0,of:16,streak:7,rule:'None needed',state:'green'},
-    {sch:'Rivas, Danna',code:'BL-2026-0004',tutor:'Maya R.',missed:3,of:11,streak:1,rule:'Voice call queued',state:'amber'},
-    {sch:'Morales, Bilal',code:'BL-2026-0005',tutor:'Grace T.',missed:5,of:13,streak:0,rule:"On Andy's Friday list",state:'red'},
-    {sch:'Fernandes, Sofia',code:'BL-2026-0006',tutor:'Tarek E.',missed:1,of:15,streak:5,rule:'Text sent 9:00am',state:'green'}
-  ];
 
   /* ---- tutors ---- */
   const TUTORS=[
@@ -128,8 +120,37 @@ window.BL = (function(){
     {t:'10:40',m:'ParentSquare export validated: 113 rows, 0 duplicate codes',k:'ok'},
     {t:'11:15',m:'Voice call queued: Rivas, Danna \u2014 3rd missed session',k:'warn'}
   ];
-  return {PROGRAMS,LANGS,SCHOOLS,families,TEST,STATS,MESSAGES,ATT,TUTORS,DEFECTS,ACTIVITY,
+  /* ---- attendance: derived from the roster so codes and counts always agree with the ledger ---- */
+  const TUTOR_NAMES=['Maya R.','Priya N.','Daniel O.','Grace T.','Tarek E.'];
+  const featured=['Anthony','Ethan','Annabella','Danna','Mia'].map(n=>families.find(f=>f.real&&f.first===n)).filter(Boolean);
+  const rest=families.filter(f=>f.missed>=2&&!featured.includes(f)).sort((a,b)=>b.missed-a.missed);
+  const ATT=featured.concat(rest).slice(0,6).map((f,i)=>{
+    const m=Math.min(f.missed,5);
+    return {sch:f.last+', '+f.first, code:(f.codes&&f.codes[0])||'—', tutor:TUTOR_NAMES[i%5], missed:f.missed, of:f.sessions,
+      streak:Math.max(0,6-m), state:m>=5?'red':m>=3?'amber':'green',
+      rule:m>=5?"On Andy's Friday list":m>=4?'Escalated — tutor check-in':m>=3?'Voice call queued':m>=2?'Text sent 9:00am':'None needed'};
+  });
+  /* ---- per-program counts, computed once, used by every screen ---- */
+  const perProgram=PROGRAMS.map(p=>({id:p.id,name:p.name,
+    families:families.filter(f=>f.progs.includes(p.id)).length,
+    coded:families.filter(f=>f.progs.includes(p.id)&&f.codes&&f.codes[0]).length,
+    rows:p.families})).filter(p=>p.families>0);
+  const SEG_COUNT={ all:families.length, missed2:families.filter(f=>f.missed>=2).length,
+    uncoded:families.filter(f=>!(f.codes&&f.codes[0])).length };
+  function audience(keys){
+    const set=new Set();
+    keys.forEach(k=>{
+      const add = k==='all'?families : k==='missed2'?families.filter(f=>f.missed>=2)
+        : k==='uncoded'?families.filter(f=>!(f.codes&&f.codes[0])) : families.filter(f=>f.progs.includes(k));
+      add.forEach(f=>set.add(f.id));
+    });
+    return set.size;
+  }
+  return {PROGRAMS,LANGS,SCHOOLS,families,TEST,STATS,MESSAGES,ATT,TUTORS,DEFECTS,ACTIVITY,perProgram,SEG_COUNT,audience,
     find:q=>{q=(q||'').trim().toLowerCase(); if(!q)return [];
-      return families.filter(f=>(f.code&&f.code.toLowerCase())||f.last.toLowerCase().includes(q)||f.first.toLowerCase().includes(q)||
-        (f.codes&&f.codes.join(' ').toLowerCase().includes(q))).slice(0,8);}};
+      return families.filter(f=>{
+        const codes=(f.codes||[]).join(' ').toLowerCase();
+        return codes.includes(q)||f.last.toLowerCase().includes(q)||f.first.toLowerCase().includes(q)
+          ||f.dob.includes(q)||f.phone.includes(q)||f.progs.join(' ').includes(q)||f.school.toLowerCase().includes(q);
+      }).slice(0,8);}};
 })();
