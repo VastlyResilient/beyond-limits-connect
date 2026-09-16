@@ -445,7 +445,7 @@ function vAttendance(){
           <div style="margin-top:14px;display:grid;gap:9px">
             ${[['2','Text the family in their own language','auto'],['3','Queue a voice call for the program line','human'],['4','Tutor check-in task','human'],['5',"Andy's Friday follow-up list",'human']]
               .map(r=>`<div style="display:flex;gap:12px;align-items:center;padding:11px 13px;border:1px solid var(--line);border-left:3px solid ${r[0]==='2'?'var(--green)':r[0]==='3'?'var(--gold)':r[0]==='4'?'var(--amber)':'var(--red)'};border-radius:10px;background:#FCFAF6">
-                <b class="mono" style="font-size:15px;width:14px">${r[0]}</b><span style="flex:1;font-size:13.2px">${r[1]}</span>
+                <b class="mono" style="font-size:13.6px;width:34px">at ${r[0]}</b><span style="flex:1;font-size:13.2px">${r[1]}</span>
                 <span class="chip ${r[2]==='auto'?'chip-green':'chip-gold'}">${r[2]==='auto'?'automatic':'needs a human'}</span>
                 <span class="tog on" style="width:38px;height:22px"></span></div>`).join('')}
           </div>
