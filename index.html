@@ -424,5 +424,7 @@ beats.forEach((b,i)=>{const d=document.createElement('div');d.className='row '+(
 /* reveal + animated meters */
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*70+'ms';io.observe(el);});
+/* failsafe: never leave content invisible if the observer does not fire (print, programmatic scroll, odd viewports) */
+setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>el.classList.add('in')),2200);
 </script>
 </body></html>
