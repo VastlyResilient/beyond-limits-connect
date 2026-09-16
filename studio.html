@@ -57,6 +57,11 @@ const codeOf=f=>(f.codes&&f.codes[0])||null;
 const initials=f=>f.first[0]+f.last[0];
 const progDots=f=>f.progs.map(p=>'<span class="pdot pd-'+p+'"></span>').join('');
 let STATE={filter:'all',q:'',sel:null,codesIssued:false,seg:['all'],lang:'es',merged:false};
+/* the only place a code is minted. Sequence is kept apart from the display counters. */
+let NEXT_SEQ=parseInt((S.nextCode||'BL-2026-0010').slice(-4),10);
+function mintCode(f){ f.codes=[ 'BL-2026-'+String(NEXT_SEQ++).padStart(4,'0') ]; }
+function recount(){ S.coded=F.filter(f=>codeOf(f)).length; S.uncoded=S.families-S.coded;
+  S.nextCode='BL-2026-'+String(NEXT_SEQ).padStart(4,'0'); }
 
 /* ---------------- shared bits ---------------- */
 function meter(p,cls){return '<div class="meter '+(cls||'')+'"><i style="width:'+p+'%"></i></div>';}
@@ -313,8 +318,9 @@ function openFam(id){
   document.getElementById('drawer').classList.add('on');
   document.querySelectorAll('#progWrap .progpill').forEach(p=>p.onclick=()=>{p.classList.toggle('on');});
   document.getElementById('issueOne').onclick=(e)=>{
-    if(!codeOf(f)){const c='BL-2026-'+String(S.coded+3).padStart(4,'0'); f.codes=[c]; S.coded++; S.uncoded--;}
-    e.target.textContent='Text sent to '+f.phone; e.target.classList.add('btn-gold');
+    if(!codeOf(f)){ mintCode(f); recount(); }
+    e.target.textContent = 'Text sent with ' + codeOf(f); e.target.classList.add('btn-gold');
+    const hc=document.querySelector('#db .mono[style*="font-size:23px"]'); if(hc) hc.textContent=codeOf(f);
   };
   document.getElementById('exportOne').onclick=()=>downloadCSV([f]);
 }
@@ -903,16 +909,16 @@ function wire(v){
   document.querySelectorAll('[data-merge]').forEach(b=>b.onclick=()=>{b.textContent='Merged — both agreements kept';b.classList.add('btn-gold');STATE.merged=true;});
   document.querySelectorAll('.tog').forEach(t=>t.onclick=()=>t.classList.toggle('on'));
   const b1=document.getElementById('bulkIssue'),b2=document.getElementById('bulkIssue2');
-  const run=()=>{if(STATE.codesIssued){go('records');return;} STATE.codesIssued=true; S.coded=S.families;S.uncoded=0;
-    F.forEach(f=>{if(!codeOf(f)){f.codes=['BL-2026-'+String(S.coded++).padStart(4,'0')];}
-      if(f.flag==='duplicate'&&f.codes[1])f.codes=[codeOf(f)];});
-    go('records');
-    const bar=document.getElementById('view').innerHTML; go('home');
-    let p=Math.round(9/S.families*100);
-    const t=setInterval(()=>{p+=2; if(p>=100){p=100;clearInterval(t);}
-      const a=document.getElementById('covBar'); if(a)a.style.width=p+'%';
-      const b=document.getElementById('covNum'); if(b)b.textContent=p+'%';
-      const c=document.getElementById('covBar2'); if(c)c.style.width=p+'%';},18);};
+  const run=()=>{
+    if(STATE.codesIssued){ go('records'); return; }
+    F.forEach(f=>{ if(!codeOf(f)) mintCode(f); });
+    F.forEach(f=>{ if(f.flag==='duplicate'&&f.codes[1]) f.codes=[f.codes[0]]; });
+    STATE.codesIssued=true; recount(); go('records');
+    let p=8; const t=setInterval(()=>{ p+=2; if(p>=100){p=100;clearInterval(t);}
+      ['covBar','covBar2'].forEach(id=>{const e=document.getElementById(id); if(e)e.style.width=p+'%';});
+      const n=document.getElementById('covNum'); if(n)n.textContent=p+'%';
+    },18);
+  };
   if(b1)b1.onclick=run; if(b2)b2.onclick=run;
   const sv=document.getElementById('runVal');
   if(sv)sv.onclick=()=>{const t=document.getElementById('term');
