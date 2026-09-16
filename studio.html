@@ -1,0 +1,982 @@
+<!DOCTYPE html><html lang="en" class="js"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beyond Limits Connect — console</title>
+<link rel="icon" href="assets/bl-mark.png"><link rel="stylesheet" href="assets/brand.css"><link rel="stylesheet" href="assets/studio.css">
+</head><body class="console">
+
+<aside class="rail">
+  <div class="brandplate"><img src="assets/bl-logo.png" alt="Beyond Limits Academics"></div>
+  <div class="who"><b>Andy Sklover</b><span>PROGRAM DIRECTOR &middot; FULL ACCESS</span></div>
+
+  <div class="rgrp">Today</div>
+  <a class="rnav on" data-v="home"><svg class="ic" viewBox="0 0 24 24"><path d="M3 10.5L12 3l9 7.5V20a1 1 0 01-1 1h-5v-6H9v6H4a1 1 0 01-1-1z"/></svg>Command center</a>
+
+  <div class="rgrp">The roster</div>
+  <a class="rnav" data-v="records"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>Family records</a>
+  <a class="rnav" data-v="review"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l9 16H3zM12 10v4M12 17.5v.5"/></svg>Review queue<span class="badge r" id="b-review">2</span></a>
+  <a class="rnav" data-v="directory"><svg class="ic" viewBox="0 0 24 24"><path d="M17 20v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9.5 10a3.5 3.5 0 100-7 3.5 3.5 0 000 7M22 20v-2a4 4 0 00-3-3.9M16 3.1a4 4 0 010 7.8"/></svg>Directory</a>
+  <a class="rnav" data-v="tutors"><svg class="ic" viewBox="0 0 24 24"><path d="M22 10L12 5 2 10l10 5 10-5zM6 12v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>Tutors</a>
+
+  <div class="rgrp">Engage</div>
+  <a class="rnav" data-v="messages"><svg class="ic" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 9 9 0 01-3.9-.9L3 21l1.9-4.9A8.4 8.4 0 013 11.5 8.4 8.4 0 0112 3a8.4 8.4 0 019 8.5z"/></svg>Messaging</a>
+  <a class="rnav" data-v="attendance"><svg class="ic" viewBox="0 0 24 24"><path d="M12 7v5l3 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>Attendance<span class="badge" id="b-att">7</span></a>
+  <a class="rnav" data-v="onboarding"><svg class="ic" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg>Onboarding</a>
+  <a class="rnav" data-v="forms"><svg class="ic" viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 00-2 2v14a2 2 0 002 2h10a2 2 0 002-2V8zM14 3v5h5M9 13h6M9 17h4"/></svg>Agreements</a>
+  <a class="rnav" data-v="calendar"><svg class="ic" viewBox="0 0 24 24"><path d="M8 2v4M16 2v4M3 9h18M5 5h14a2 2 0 012 2v13a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2z"/></svg>Calendar</a>
+
+  <div class="rgrp">Program health</div>
+  <a class="rnav" data-v="export"><svg class="ic" viewBox="0 0 24 24"><path d="M4 7h11l-3-3M20 17H9l3 3M20 7l-3-3M4 17l3 3"/></svg>ParentSquare sync</a>
+  <a class="rnav" data-v="insights"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Insights</a>
+  <a class="rnav" data-v="settings"><svg class="ic" viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-2.9 1.2V21a2 2 0 11-4 0v-.1A1.7 1.7 0 006 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.7 1.7 0 003 13.7H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 6L4.5 5.9a2 2 0 112.8-2.8l.1.1A1.7 1.7 0 0010 3.1V3a2 2 0 114 0v.1a1.7 1.7 0 002.9 1.2l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 001.2 2.9H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Settings</a>
+
+  <div class="rail-foot"><b>Data ownership</b>Roster + script currently sit on a personal Google account. Transfer outstanding.</div>
+</aside>
+
+<div class="main">
+  <div class="top">
+    <div class="crumb" id="crumb">Command center<small id="crsub">Wednesday, 16 September 2026 &middot; 4 sessions today</small></div>
+    <div class="search">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+      <input id="q" placeholder="Search a participant code or a family name..." autocomplete="off">
+      <div class="sres" id="sres"></div>
+    </div>
+    <button class="btn btn-navy btn-sm" id="newFamily">+ New family</button>
+  </div>
+  <div class="vwrap" id="view"></div>
+</div>
+
+<div class="drawer" id="drawer"><div class="drawer-h" id="dh"></div><div class="drawer-b" id="db"></div></div>
+
+<script src="assets/data.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script>
+const S=BL.STATS, F=BL.families, PROG={main:'Main',horizons:'Horizons',scse:'SCSE',starfish:'Starfish',bffs:'BFFS'};
+const el=(h)=>{const d=document.createElement('div');d.innerHTML=h.trim();return d.firstElementChild;};
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const codeOf=f=>(f.codes&&f.codes[0])||null;
+const initials=f=>f.first[0]+f.last[0];
+const progDots=f=>f.progs.map(p=>'<span class="pdot pd-'+p+'"></span>').join('');
+let STATE={filter:'all',q:'',sel:null,codesIssued:false,seg:['all'],lang:'es',merged:false};
+
+/* ---------------- shared bits ---------------- */
+function meter(p,cls){return '<div class="meter '+(cls||'')+'"><i style="width:'+p+'%"></i></div>';}
+function statCard(label,val,sub,cls){return '<div class="card pad"><div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63;text-transform:uppercase">'+label+'</div>'+
+  '<div style="font-family:var(--f-d);font-size:34px;line-height:1.05;margin:8px 0 4px" class="'+(cls||'')+'">'+val+'</div>'+
+  '<div style="font-size:12.6px;color:var(--muted)">'+sub+'</div></div>';}
+
+/* ---------------- 01 · COMMAND CENTER ---------------- */
+function vHome(){
+  const cov=Math.round(S.coded/S.families*100);
+  return `
+  <div style="background:linear-gradient(160deg,var(--navy),var(--navy-900));border-radius:var(--r-lg);padding:30px 34px;color:#fff;position:relative;overflow:hidden" class="blank">
+    <div style="position:absolute;width:340px;height:340px;background:var(--gold);filter:blur(120px);opacity:.17;top:-140px;right:-60px"></div>
+    <div style="display:grid;grid-template-columns:1.25fr .75fr;gap:34px;align-items:center;position:relative">
+      <div>
+        <span class="eyebrow" style="color:#9FB6DA">Wednesday, 16 September &middot; 8:12am</span>
+        <h2 style="color:#fff;font-size:34px;margin:10px 0 8px">Good morning, Andy. The roster is <b style="color:var(--gold-2)">${cov}%</b> coded.</h2>
+        <p style="color:rgba(255,255,255,.76);font-size:14.6px;margin:0 0 18px;max-width:62ch">Nine codes exist and ${S.uncoded} families still have none — until that flips, ParentSquare onboarding
+          has nothing to key on. Everything else on this screen can wait; this cannot.</p>
+        <div style="display:flex;gap:11px;flex-wrap:wrap">
+          <button class="btn btn-gold btn-sm" id="bulkIssue">Issue the remaining ${S.uncoded} codes</button>
+          <button class="btn btn-sm" style="background:rgba(255,255,255,.12);color:#fff" data-go="review">Open review queue (2)</button>
+        </div>
+      </div>
+      <div>
+        <div style="font-family:var(--f-m);font-size:10.6px;letter-spacing:.16em;color:#9FB6DA;text-transform:uppercase;margin-bottom:9px">Code coverage</div>
+        <div class="meter gold" style="height:11px;background:rgba(255,255,255,.17)"><i id="covBar" style="width:${cov}%"></i></div>
+        <div style="display:flex;justify-content:space-between;font-size:12.4px;color:#C6D3E6;margin-top:9px">
+          <span><b style="color:#fff">${S.coded}</b> coded</span><span><b style="color:#fff">${S.uncoded}</b> to go</span><span>next: <span class="mono">${S.nextCode}</span></span></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px">
+          <div style="background:rgba(255,255,255,.08);border-radius:11px;padding:12px">
+            <div style="font-family:var(--f-d);font-size:26px">${S.families}</div><div style="font-size:11.4px;color:#9FB6DA">ACTIVE FAMILIES</div></div>
+          <div style="background:rgba(255,255,255,.08);border-radius:11px;padding:12px">
+            <div style="font-family:var(--f-d);font-size:26px">${S.removed}</div><div style="font-size:11.4px;color:#9FB6DA">REMOVED BY ANDY</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:18px;grid-template-columns:1.15fr 1fr .85fr">
+    <div class="card">
+      <div class="card-h"><h3>What needs you today</h3><span class="mono" style="margin-left:auto">3 items</span></div>
+      <div class="rowlist">
+        <div class="rl" data-go="review" style="cursor:pointer">
+          <span class="chip chip-red">Decide</span>
+          <div><b>Two families need a human call</b><div style="font-size:12.4px;color:var(--muted)">Rojas, Annabella &middot; Lopez, Anthony — duplicate identities</div></div></div>
+        <div class="rl" data-go="records" style="cursor:pointer">
+          <span class="chip chip-amber">Fix</span>
+          <div><b>The Starfish tab is still broken</b><div style="font-size:12.4px;color:var(--muted)">Rows 1–5 pasted, row 10 is the real header. Restructure queued.</div></div></div>
+        <div class="rl" data-go="attendance" style="cursor:pointer">
+          <span class="chip chip-gold">Watch</span>
+          <div><b>Two scholars crossed the escalation line</b><div style="font-size:12.4px;color:var(--muted)">Morales, Bilal (5 missed) &middot; Lopez, Anthony (4 missed)</div></div></div>
+      </div>
+      <div class="pad" style="border-top:1px solid var(--line);background:#FCFAF6">
+        <div style="font-size:12.4px;color:var(--muted);margin-bottom:9px">Ownership risk — the roster and the code script both live on a personal Google account today.</div>
+        <button class="btn btn-ghost btn-sm" data-go="settings">Review the security panel</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3>Today at Long Ridge Road</h3><div class="tabs" style="margin-left:auto"><button class="on">Wed</button><button>Thu</button><button>Fri</button></div></div>
+      <div class="pad" style="display:grid;gap:11px">
+        ${[['3:30','Tutoring block — 6 rooms','Room A–F','Maya R. · Priya N. · Grace T.','green'],
+           ['4:15','Horizons lab','Room B','Daniel O.','navy'],
+           ['5:00','Main session','Room A/C','Maya R. · Tarek E.','navy'],
+           ['6:00','SCSE family night','Lounge','translators on site','gold']].map(r=>`
+          <div style="display:flex;gap:13px;align-items:center;padding:11px 13px;border:1px solid var(--line);border-left:3px solid var(--${r[4]==='gold'?'gold':'navy'});border-radius:10px;background:#FCFAF6">
+            <div class="mono" style="font-size:13px;font-weight:700;color:var(--navy);width:44px">${r[0]}</div>
+            <div style="flex:1"><b style="font-size:13.8px">${r[1]}</b><div style="font-size:11.8px;color:var(--muted)">${r[3]}</div></div>
+            <span class="chip">${r[2]}</span></div>`).join('')}
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3 style="font-size:15.6px">Live</h3><span class="chip chip-green" style="margin-left:auto"><span class="dot pulse"></span>running</span></div>
+      <div class="pad" id="feed" style="display:grid;gap:10px;font-size:12.6px">
+        ${BL.ACTIVITY.map((a,i)=>`<div style="display:flex;gap:10px" class="blank" ><span class="mono" style="color:var(--muted);flex:none;font-size:11px;padding-top:2px">${a.t}</span>
+          <span style="color:${a.k==='ok'?'var(--green)':a.k==='hold'?'var(--amber)':a.k==='warn'?'var(--amber)':'#3C4759'}">${a.m}</span></div>`).join('')}
+      </div>
+    </div>
+  </div>
+
+  <div class="grid4" style="margin-top:18px">
+    ${statCard('Contactability','99.2%','113 of 113 families reachable','')}
+    ${statCard('Read rate, last send','94%','Remind-transition notice','')}
+    ${statCard('Missed-session recovery','7','opens this week','')}
+    ${statCard('Agreements on file','148','across four tracks','')}
+  </div>`;
+}
+
+/* ---------------- 02 · FAMILY RECORDS ---------------- */
+function filtered(){
+  let a=F.slice();
+  if(STATE.filter==='uncoded') a=a.filter(f=>!codeOf(f));
+  else if(STATE.filter==='dup') a=a.filter(f=>f.flag==='duplicate'||f.flag==='decision');
+  else if(STATE.filter!=='all') a=a.filter(f=>f.progs.includes(STATE.filter));
+  if(STATE.q){const q=STATE.q.toLowerCase();a=a.filter(f=>(codeOf(f)||'').toLowerCase().includes(q)||f.last.toLowerCase().includes(q)||f.first.toLowerCase().includes(q));}
+  return a;
+}
+function vRecords(){
+  const rows=filtered(), cov=Math.round(S.coded/S.families*100);
+  return `
+  <div style="display:grid;grid-template-columns:1fr 330px;gap:18px;align-items:start">
+    <div class="card" style="overflow:hidden">
+      <div class="card-h" style="flex-wrap:wrap;gap:9px">
+        <h3>Family records</h3>
+        <span class="mono" style="color:var(--muted)">${rows.length} of ${S.families} shown</span>
+        <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
+          ${[['all','All'],['uncoded','Needs a code'],['dup','Duplicates'],['main','Main'],['horizons','Horizons'],['scse','SCSE'],['starfish','Starfish'],['bffs','BFFS']]
+            .map(([k,l])=>`<button class="chip ${STATE.filter===k?'chip-navy':''}" style="cursor:pointer" data-f="${k}">${l}</button>`).join('')}
+        </div>
+      </div>
+      <div class="lscroll">
+        <table class="ledger">
+          <thead><tr><th>Family</th><th>Participant code</th><th>Track</th><th>Grade</th><th>Language</th><th>School</th><th>Sessions</th></tr></thead>
+          <tbody>
+          ${rows.map(f=>`<tr data-fam="${f.id}" class="${STATE.sel===f.id?'sel':''}">
+            <td><div class="nm">${esc(f.last)}, ${esc(f.first)} ${f.flag==='duplicate'?'<span class="chip chip-red" style="font-size:10px;padding:2px 7px">dup</span>':f.flag==='decision'?'<span class="chip chip-amber" style="font-size:10px;padding:2px 7px">decide</span>':''}</div>
+              <div class="sub">DOB ${f.dob} &middot; ${esc(f.phone)}</div></td>
+            <td>${codeOf(f)?'<span class="code">'+codeOf(f)+'</span>':'<span class="chip chip-amber">needs a code</span>'}</td>
+            <td>${progDots(f)}<span style="font-size:12.8px">${f.progs.map(p=>PROG[p]).join(' + ')}</span></td>
+            <td>${f.grade}</td>
+            <td>${f.lang}</td>
+            <td style="font-size:12.6px;color:var(--muted)">${esc(f.school)}</td>
+            <td>${f.sessions} <span style="color:var(--muted);font-size:12px">/ ${f.missed} missed</span></td></tr>`).join('')}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div class="card pad">
+        <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63;text-transform:uppercase">Code engine</div>
+        <div style="display:flex;align-items:baseline;gap:9px;margin:10px 0 4px">
+          <span style="font-family:var(--f-d);font-size:31px" id="covNum">${cov}%</span>
+          <span style="font-size:12.4px;color:var(--muted)">of families coded</span>
+        </div>
+        <div class="meter gold" style="height:9px"><i id="covBar2" style="width:${cov}%"></i></div>
+        <div class="kv" style="margin-top:14px"><i>Next code in the series</i><b class="mono" id="nextCode">${S.nextCode}</b></div>
+        <div class="kv"><i>Series</i><b class="mono">BL-2026-####</b></div>
+        <div class="kv"><i>Program stored in</i><b>its own column</b></div>
+        <div class="kv"><i>Codes changed on transfer</i><b style="color:var(--green)">never</b></div>
+        <button class="btn btn-navy btn-sm" style="width:100%;justify-content:center;margin-top:15px" id="bulkIssue2">Back-fill the ${S.uncoded} missing codes</button>
+        <div style="font-size:11.6px;color:var(--muted);margin-top:9px;line-height:1.5">One family, one row, one code — however many programs they join and however many agreements they sign.
+          The list is the only place a code is ever minted.</div>
+      </div>
+
+      <div class="card pad">
+        <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63;text-transform:uppercase">Matching rules</div>
+        <div style="display:grid;gap:11px;margin-top:13px;font-size:13.2px">
+          <div style="display:flex;gap:9px"><span class="chip chip-green">Match</span><span>No match on <b>name + date of birth</b> &rarr; new family, next code.</span></div>
+          <div style="display:flex;gap:9px"><span class="chip chip-navy">Keep</span><span>Clear match &rarr; the family keeps its code, the new track is added to the row.</span></div>
+          <div style="display:flex;gap:9px"><span class="chip chip-amber">Hold</span><span>Anything uncertain parks for Andy. It never guesses a column.</span></div>
+        </div>
+        <div style="margin-top:14px;padding:12px;border-radius:10px;background:var(--paper-2);font-size:12.4px;color:#4A5568">
+          Phone alone would <b>not</b> have caught Ethan Shalauddin — the two submissions carried different numbers for the same household.</div>
+      </div>
+
+      <div class="card pad">
+        <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63;text-transform:uppercase">Still broken upstream</div>
+        <div style="display:grid;gap:8px;margin-top:12px">
+          ${BL.DEFECTS.filter(d=>d.sev==='red').slice(0,3).map(d=>`<div style="font-size:12.6px;display:flex;gap:8px"><span class="dot" style="background:var(--red);margin-top:6px"></span><span>${d.t}</span></div>`).join('')}
+        </div>
+        <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;margin-top:13px" data-go="settings">See all nine defects</button>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- 03 · REVIEW QUEUE ---------------- */
+function vReview(){
+  const card=(f,lines)=>`
+  <div class="card" style="overflow:hidden;border-top:4px solid var(--amber)">
+    <div class="card-h"><h3>${esc(f.last)}, ${esc(f.first)}</h3><span class="chip chip-amber" style="margin-left:auto">Needs your call</span></div>
+    <div class="pad">
+      <div style="font-size:13.6px;color:#4A5568;margin-bottom:16px">${f.realNote||''}</div>
+      <div class="grid2" style="gap:12px">
+        ${lines.map(l=>`<div style="border:1px solid var(--line);border-radius:12px;padding:14px;background:#FCFAF6">
+          <span class="chip ${l[0]==='Keep'?'chip-navy':'chip-amber'}" style="margin-bottom:9px">${l[0]}</span>
+          <div style="font-size:12.8px;color:var(--muted);line-height:1.7">${l[1]}</div>
+          <button class="btn btn-sm ${l[0]==='Keep'?'btn-navy':'btn-ghost'}" style="margin-top:11px;width:100%;justify-content:center" data-merge="${f.id}">${l[2]}</button></div>`).join('')}
+      </div>
+      <div style="margin-top:15px;padding:13px;border-radius:11px;background:var(--navy-050);font-size:12.8px">
+        <b>Either way, both signed agreements stay on file.</b> Merging does not ask a parent to fill the form again — it is the
+        "delete a duplicate / reassign to a subgroup" ability you asked for, done on the back end.</div>
+    </div>
+  </div>`;
+  return `
+  <div class="grid2" style="align-items:start">
+    ${card(F.find(x=>x.first==='Annabella'),[['Keep','Main 8 Nov 2024 &middot; no code issued &middot; household phone 203&#8226;&#8226;&#8226; &middot; grade 5','Keep the Main copy'],
+      ['Keep','SCSE 5 Dec 2024 &middot; BLA-2026-0001 &middot; same DOB, same address','Keep the SCSE copy']])}
+    ${card(F.find(x=>x.first==='Anthony'),[['Keep','Main 2 Jan 2025 &middot; then Main again 4 Sep 2025 &middot; grade 9','Keep the second Main copy'],
+      ['Keep','Starfish row copied from the second submission &middot; never actually signed','Keep the Starfish row']])}
+  </div>
+
+  <div class="card" style="margin-top:18px;border-top:4px solid var(--red)">
+    <div class="card-h"><h3>Structural repairs waiting on your go-ahead</h3><span class="mono" style="margin-left:auto">${BL.DEFECTS.length} defects</span></div>
+    <div class="rowlist">
+      ${BL.DEFECTS.map(d=>`<div class="rl">
+        <span class="dot" style="background:var(--${d.sev==='red'?'red':'amber'});width:9px;height:9px"></span>
+        <span class="mono" style="color:var(--muted);font-size:11.4px;width:22px">${d.n}</span>
+        <div style="flex:1"><b style="font-size:13.8px">${d.t}</b><div style="font-size:12.4px;color:var(--muted)">${d.d}</div></div>
+        <span class="chip ${d.sev==='red'?'chip-red':'chip-amber'}">${d.sev==='red'?'blocking':'queued'}</span></div>`).join('')}
+    </div>
+  </div>`;
+}
+
+/* ---------------- drawer ---------------- */
+function openFam(id){
+  const f=F.find(x=>x.id===id); if(!f)return; STATE.sel=id;
+  document.getElementById('dh').innerHTML=`
+    <div style="width:44px;height:44px;border-radius:12px;background:var(--navy);color:#fff;display:grid;place-items:center;font-family:var(--f-d);font-size:17px">${initials(f)}</div>
+    <div><h3 style="font-size:21px">${esc(f.last)}, ${esc(f.first)}</h3>
+      <div style="font-size:12.4px;color:var(--muted)">DOB ${f.dob} &middot; grade ${f.grade} &middot; ${esc(f.school)}</div></div>
+    <button class="x" onclick="closeDrawer()">&times;</button>`;
+  const code=codeOf(f);
+  document.getElementById('db').innerHTML=`
+    <div style="display:flex;align-items:center;gap:12px;padding:16px;border-radius:14px;background:${code?'var(--green-050)':'var(--amber-050)'}">
+      <div><div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63">PARTICIPANT CODE</div>
+        <div class="mono" style="font-size:23px;font-weight:700;color:${code?'var(--navy)':'var(--amber)'};margin-top:3px">${code||'not yet issued'}</div></div>
+      <button class="btn ${code?'btn-ghost':'btn-navy'} btn-sm" style="margin-left:auto" id="issueOne">${code?'Re-send by text':'Issue code now'}</button>
+    </div>
+    ${f.realNote?`<div style="margin-top:14px;padding:13px;border-radius:11px;background:var(--red-050);border:1px solid #F2CFC9;font-size:12.8px">${f.realNote}</div>`:''}
+
+    <div class="sect-t">Tracks — reassign without a new agreement</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap" id="progWrap">
+      ${Object.keys(PROG).map(p=>`<span class="progpill ${f.progs.includes(p)?'on':''}" data-p="${p}"><span class="pdot pd-${p}"></span>${PROG[p]}</span>`).join('')}
+    </div>
+    <div style="font-size:11.8px;color:var(--muted);margin-top:9px">Moving a family between tracks never changes their code — the program lives in its own column.</div>
+
+    <div class="sect-t">Household</div>
+    <div class="kv"><i>Parent phone</i><b class="mono">${f.phone}</b></div>
+    <div class="kv"><i>Email</i><b>${esc(f.email)}</b></div>
+    <div class="kv"><i>Preferred language</i><b>${f.lang}</b></div>
+    <div class="kv"><i>Agreement forms signed</i><b>${f.progs.length} of ${f.progs.length}</b></div>
+    <div class="kv"><i>Sessions attended</i><b>${f.sessions} &middot; ${f.missed} missed</b></div>
+    <div class="kv"><i>ParentSquare ID</i><b>${code?'<span style="color:var(--green)">ready — '+code+'</span>':'<span style="color:var(--amber)">waiting on a code</span>'}</b></div>
+
+    <div class="sect-t">Agreements on file</div>
+    ${f.progs.map(p=>`<div style="display:flex;gap:11px;align-items:center;padding:11px 13px;border:1px solid var(--line);border-radius:11px;margin-bottom:8px;font-size:13.2px">
+        <svg class="ic" viewBox="0 0 24 24" style="color:var(--green)"><path d="M20 6L9 17l-5-5"/></svg>
+        <div><b>${PROG[p]} participant agreement</b><div style="font-size:11.6px;color:var(--muted)">Signed &middot; stored as a secure document &middot; no re-submission needed</div></div>
+        <span class="chip chip-green" style="margin-left:auto">on file</span></div>`).join('')}
+
+    <div class="sect-t">History</div>
+    ${BL.ACTIVITY.filter(a=>true).slice(0,5).map(a=>`<div style="display:flex;gap:11px;font-size:12.6px;padding:7px 0;border-bottom:1px dotted var(--line)">
+        <span class="mono" style="color:var(--muted);font-size:11px">${a.t}</span><span>${a.m}</span></div>`).join('')}
+
+    <div style="display:flex;gap:9px;margin-top:20px;flex-wrap:wrap">
+      <button class="btn btn-navy btn-sm" data-go="messages">Message this family</button>
+      <button class="btn btn-ghost btn-sm" data-go="attendance">Attendance detail</button>
+      <button class="btn btn-ghost btn-sm" id="exportOne">Export this row</button>
+    </div>`;
+  document.getElementById('drawer').classList.add('on');
+  document.querySelectorAll('#progWrap .progpill').forEach(p=>p.onclick=()=>{p.classList.toggle('on');});
+  document.getElementById('issueOne').onclick=(e)=>{
+    if(!codeOf(f)){const c='BL-2026-'+String(S.coded+3).padStart(4,'0'); f.codes=[c]; S.coded++; S.uncoded--;}
+    e.target.textContent='Text sent to '+f.phone; e.target.classList.add('btn-gold');
+  };
+  document.getElementById('exportOne').onclick=()=>downloadCSV([f]);
+}
+function closeDrawer(){document.getElementById('drawer').classList.remove('on');STATE.sel=null;document.querySelectorAll('.ledger tr.sel').forEach(r=>r.classList.remove('sel'));}
+
+/* ---------------- 04 · MESSAGING ---------------- */
+const SEGMENTS=[['all','Every family',113,'All four tracks'],['main','Main',110,'The comprehensive sheet'],
+ ['horizons','Horizons',21,'Saturday labs'],['scse','SCSE',17,'Charter school families'],
+ ['starfish','Starfish',4,'Pasted rows — no agreement signed'],['bffs','BFFS',13,'Unmapped track'],
+ ['missed2','Missed 2+ sessions',7,'Recovery rule'],['uncoded','No code yet',105,'Cannot go to ParentSquare']];
+const MSG_TXT={
+ es:'Hola familia de Beyond Limits: Remind dejará de funcionar este mes. Sus mensajes ahora llegan por ParentSquare — no necesita descargar nada ni crear una contraseña. El código de su familia es {CODE}. Responda a este mensaje si tiene preguntas. — Andy',
+ en:'Hello Beyond Limits family: Remind shuts down this month. Your messages move to ParentSquare — nothing to download, no password to remember. Your family code is {CODE}. Reply here with any questions. — Andy',
+ pt:'Olá família Beyond Limits: o Remind será descontinuado este mês. Suas mensagens passam para o ParentSquare — não é preciso baixar nada. O código da sua família é {CODE}. — Andy',
+ ht:'Bonjou fanmi Beyond Limits: Remind ap fèmen mwa sa a. Mesaj ou yo ap pase nan ParentSquare — pa gen anyen pou telechaje. Kòd fanmi w se {CODE}. — Andy'};
+function vMessages(){
+  const segs=STATE.seg, n=segs.reduce((a,s)=>a+(SEGMENTS.find(x=>x[0]===s)||[0,0,0])[2],0);
+  return `
+  <div style="display:grid;grid-template-columns:290px 1fr 380px;gap:18px;align-items:start" class="msgwrap">
+    <div class="card">
+      <div class="card-h" style="display:block"><h3 style="font-size:16px">Who gets this</h3>
+        <div style="font-size:12.2px;color:var(--muted);margin-top:4px">Pick any combination — counts add up live.</div></div>
+      <div class="pad" style="padding-top:14px">
+        ${SEGMENTS.map(([k,l,c,n2])=>`<div class="seg ${segs.includes(k)?'on':''}" data-seg="${k}">
+          <span class="chk">&#10003;</span><div><b style="font-size:13.4px">${l}</b><div style="font-size:11.4px;color:var(--muted)">${n2}</div></div>
+          <span class="cnt">${c}</span></div>`).join('')}
+        <div style="margin-top:14px;padding:13px;border-radius:11px;background:var(--navy-050);display:flex;justify-content:space-between;align-items:center">
+          <span style="font-size:12.6px;color:var(--navy)">Recipients</span><b id="segCount" style="font-family:var(--f-d);font-size:22px">${n}</b></div>
+        <div style="font-size:11.6px;color:var(--muted);margin-top:10px">Families appear once however many tracks they are in — the code deduplicates the audience.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-h"><h3 style="font-size:16px">Compose</h3>
+        <div class="tabs" style="margin-left:auto" id="langTabs">
+          ${[['en','English'],['es','Español'],['pt','Português'],['ht','Kreyòl']].map(([k,l])=>`<button class="${STATE.lang===k?'on':''}" data-lang="${k}">${l}</button>`).join('')}
+        </div></div>
+      <div class="pad">
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:13px">
+          <span class="chip chip-navy">Text message</span><span class="chip">Email</span><span class="chip">In-app</span>
+          <span class="chip chip-gold">Auto-translate on</span><span class="chip">No login required</span></div>
+        <div style="font-size:12.4px;color:var(--muted);margin-bottom:7px">You write it once, in English. Each family receives it in their own language.</div>
+        <textarea id="msgBody" style="width:100%;min-height:150px;border:1px solid var(--line-2);border-radius:13px;padding:15px;font:inherit;font-size:14.4px;line-height:1.65;color:var(--ink);resize:vertical;background:#FCFAF6">${MSG_TXT[STATE.lang]}</textarea>
+        <div style="display:flex;gap:9px;align-items:center;margin-top:12px;flex-wrap:wrap">
+          <button class="btn btn-navy btn-sm" id="sendMsg">Send now</button>
+          <button class="btn btn-ghost btn-sm" id="schedMsg">Schedule 9:00am</button>
+          <label style="display:flex;gap:8px;align-items:center;font-size:13px;color:var(--muted)"><input type="checkbox" checked> Attach the Remind-to-ParentSquare switch guide</label>
+        </div>
+        <div id="sendOut" style="margin-top:13px"></div>
+
+        <div class="sect-t">Recent sends</div>
+        <div class="rowlist">
+          ${BL.MESSAGES.map(m=>`<div class="rl" style="padding:12px 0">
+            <span class="chip ${m.status==='sent'?'chip-green':m.status==='scheduled'?'chip-gold':''}">${m.status}</span>
+            <div style="flex:1"><b style="font-size:13.4px">${m.t}</b><div style="font-size:11.8px;color:var(--muted)">${m.seg} &middot; ${m.ch} &middot; ${m.when}</div></div>
+            <div style="text-align:right;font-size:12px;color:var(--muted)">${m.read?'<b style="color:var(--ink)">'+m.read+'%</b> read':'—'}${m.rs?'<div>'+m.rs+'</div>':''}</div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <div class="stage">
+        <div class="phone">
+          <div class="phone-top"><span>9:41</span><span>Messages</span><span>100%</span></div>
+          <div class="phone-body">
+            <div style="font-size:11px;color:var(--muted);text-align:center;margin:6px 0 12px">Beyond Limits Academic Program</div>
+            <div class="bubble" id="phoneTxt">${MSG_TXT[STATE.lang].replace('{CODE}','BL-2026-0113')}</div>
+            <div class="transnote"><svg class="ic ic-sm" viewBox="0 0 24 24"><path d="M4 5h16M4 12h10M4 19h7"/></svg> delivered in ${({en:'English',es:'Spanish',pt:'Portuguese',ht:'Haitian Creole'})[STATE.lang]} &middot; family's own setting</div>
+            <div class="bubble out" style="margin-top:14px">&#128077; Ya la vi, gracias!</div>
+            <div style="margin-top:16px;border-top:1px dashed var(--line);padding-top:13px">
+              <div style="font-size:11.4px;color:var(--muted);margin-bottom:9px">No app. No password.</div>
+              <button class="btn btn-gold btn-sm" style="width:100%;justify-content:center">RSVP for the family night</button></div>
+          </div>
+        </div>
+      </div>
+      <div class="card pad" style="margin-top:16px">
+        <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63;text-transform:uppercase">Delivery intelligence</div>
+        <div style="display:grid;gap:12px;margin-top:13px">
+          ${[['Text delivered',97,'g'],['Read within 24h',94,''],['Answered in Spanish',38,'gold'],['Email opened',61,'']].map(r=>`
+            <div><div style="display:flex;justify-content:space-between;font-size:12.8px;margin-bottom:5px"><span>${r[0]}</span><b>${r[1]}%</b></div>
+              ${meter(r[1],r[2])}</div>`).join('')}
+        </div>
+        <div style="margin-top:14px;font-size:12px;color:var(--muted)">Dead phone numbers are flagged before you send, not after.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- 05 · ATTENDANCE ---------------- */
+function vAttendance(){
+  const wk=['W1','W2','W3','W4','W5','W6','W7','W8','W9','W10','W11','W12'];
+  return `
+  <div class="grid2" style="grid-template-columns:1.35fr 1fr;align-items:start">
+    <div class="card">
+      <div class="card-h"><h3>Attendance, last twelve weeks</h3>
+        <div style="margin-left:auto;display:flex;gap:12px;font-size:11.6px;color:var(--muted);align-items:center">
+          <span><span class="hcell p" style="display:inline-block;vertical-align:middle;width:13px;height:13px;margin-right:5px"></span>present</span>
+          <span><span class="hcell a" style="display:inline-block;vertical-align:middle;width:13px;height:13px;margin-right:5px"></span>late/cancelled</span>
+          <span><span class="hcell m" style="display:inline-block;vertical-align:middle;width:13px;height:13px;margin-right:5px"></span>missed</span></div></div>
+      <div class="pad" style="overflow:auto">
+        <div style="display:grid;gap:7px;min-width:640px">
+          <div class="heat" style="grid-template-columns:180px repeat(12,20px);align-items:center">
+            <span></span>${wk.map(w=>`<span class="mono" style="font-size:9.6px;color:var(--muted);writing-mode:vertical-rl;height:26px">${w}</span>`).join('')}
+          </div>
+          ${BL.ATT.map((a,i)=>`<div class="heat" style="grid-template-columns:180px repeat(12,20px);align-items:center">
+            <span style="font-size:12.8px;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${a.sch}
+              <div style="font-size:10.8px;font-weight:400;color:var(--muted)">${a.tutor}</div></span>
+            ${Array.from({length:12},(_,j)=>{
+              const m=(j*3+i*5)%17===0||(i<3&&j>7&&(j+i)%4===0);
+              const late=(j+i*3)%11===0;
+              return `<span class="hcell ${m?'m':late?'a':'p'}" title="W${j+1}"></span>`;}).join('')}
+            </div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">The rule you asked for</h3><span class="chip chip-green" style="margin-left:auto"><span class="dot pulse"></span>armed</span></div>
+        <div class="pad">
+          <div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:14.4px;line-height:1.9">
+            If a scholar misses
+            <input id="thr" type="number" value="2" min="1" max="10" style="width:64px;padding:8px;border:1px solid var(--line-2);border-radius:9px;font:inherit;text-align:center">
+            of the last
+            <input id="win" type="number" value="5" min="2" max="20" style="width:64px;padding:8px;border:1px solid var(--line-2);border-radius:9px;font:inherit;text-align:center">
+            scheduled sessions &mdash; message the family.
+          </div>
+          <div style="margin-top:14px;display:grid;gap:9px">
+            ${[['2','Text the family in their own language','auto'],['3','Queue a voice call for the program line','human'],['4','Tutor check-in task','human'],['5',"Andy's Friday follow-up list",'human']]
+              .map(r=>`<div style="display:flex;gap:12px;align-items:center;padding:11px 13px;border:1px solid var(--line);border-left:3px solid ${r[0]==='2'?'var(--green)':r[0]==='3'?'var(--gold)':r[0]==='4'?'var(--amber)':'var(--red)'};border-radius:10px;background:#FCFAF6">
+                <b class="mono" style="font-size:15px;width:14px">${r[0]}</b><span style="flex:1;font-size:13.2px">${r[1]}</span>
+                <span class="chip ${r[2]==='auto'?'chip-green':'chip-gold'}">${r[2]==='auto'?'automatic':'needs a human'}</span>
+                <span class="tog on" style="width:38px;height:22px"></span></div>`).join('')}
+          </div>
+          <button class="btn btn-navy btn-sm" style="margin-top:15px" id="runRules">Run the check now</button>
+          <div id="ruleOut" style="margin-top:12px;font-size:13px"></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Recovery queue</h3><span class="mono" style="margin-left:auto">7 opens</span></div>
+        <div class="rowlist">
+          ${BL.ATT.map(a=>`<div class="rl">
+            <span class="dot" style="background:var(--${a.state})"></span>
+            <div style="flex:1"><b style="font-size:13.6px">${a.sch}</b>
+              <div style="font-size:11.8px;color:var(--muted)">${a.missed} missed of ${a.of} &middot; tutor ${a.tutor}</div></div>
+            <div style="text-align:right"><div style="font-size:12.2px">${a.rule}</div>
+              <span class="code" style="font-size:10.6px">${a.code}</span></div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grid3" style="margin-top:18px">
+    ${statCard('Chronic-absence risk','2 scholars','5+ missed sessions this term','')}
+    ${statCard('Recovered this month','11','families re-booked after a text','')}
+    ${statCard('Avg. reply time','42 min','median across all languages','')}
+  </div>`;
+}
+
+/* ---------------- 06 · ONBOARDING ---------------- */
+function vOnboarding(){
+  const sticker=false;
+  return `
+  <div style="display:grid;grid-template-columns:1.25fr 1fr;gap:18px;align-items:start">
+    <div class="card">
+      <div class="card-h"><h3>A new family walks in</h3><span class="chip chip-navy" style="margin-left:auto">Project 2 — waiting on your slides</span></div>
+      <div class="pad">
+        <div class="steps" style="margin-bottom:22px">
+          <div class="step done"><span class="n">&#10003;</span>Scan the QR</div>
+          <div class="step now"><span class="n">2</span>Pick a language</div>
+          <div class="step"><span class="n">3</span>Three-minute orientation</div>
+          <div class="step"><span class="n">4</span>Sign the agreement</div>
+          <div class="step"><span class="n">5</span>Code issued</div>
+        </div>
+        <div class="grid2" style="gap:16px">
+          <div>
+            <div class="sect-t" style="margin-top:0">Choose a language</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:9px">
+              ${[['English','Welcome'],['Español','Bienvenido'],['Português','Bem-vindo'],['Kreyòl','Byenveni'],['Shqip','Mirë se vini'],['العربية','أهلا']]
+                .map((l,i)=>`<div class="seg ${i===0?'on':''}" style="margin:0;padding:10px"><div><b style="font-size:13px">${l[0]}</b>
+                  <div style="font-size:11px;color:var(--muted)">${l[1]}</div></div></div>`).join('')}
+            </div>
+            <div class="sect-t">What the family sees first</div>
+            <div style="border:1px solid var(--line);border-radius:13px;padding:16px;background:#FCFAF6">
+              <span class="eyebrow">Before we start</span>
+              <h3 style="font-size:19px;margin:8px 0 6px">Which program is your family joining?</h3>
+              <div style="display:grid;gap:8px;margin-top:12px">
+                ${['Main — weekly one-to-one tutoring','Horizons — Saturday enrichment labs','SCSE — for Charter School families','Starfish — new this year']
+                  .map(o=>`<div class="seg" style="margin:0"><span class="chk" style="border-radius:50%"></span><span style="font-size:13px">${o}</span></div>`).join('')}
+              </div>
+              <div style="font-size:11.8px;color:var(--muted);margin-top:11px">Different programs carry different participation agreements — this is how the right one is chosen before anything is signed.</div>
+            </div>
+            <div style="margin-top:14px;padding:13px;border-radius:11px;background:var(--amber-050);border:1px solid #F1DFB8;font-size:12.6px">
+              <b>A warm-up, not an open chatbot.</b> No avatar, no free-form answers to children — the orientation is scripted,
+              and anything outside it transfers to a person. That was your call and it is the right one.
+            </div>
+            <div style="margin-top:10px;padding:13px;border-radius:11px;background:var(--navy-050);font-size:12.6px">
+              <b>Editable on the back end.</b> Change a line of the orientation on this screen — no new PowerPoint, no re-send.
+            </div>
+          </div>
+          <div>
+            <div class="qrbox">
+              <div id="qr" style="display:grid;place-items:center;min-height:190px"></div>
+              <div style="font-family:var(--f-d);font-size:17px;margin-top:12px">beyondlimits.org/join</div>
+              <div style="font-size:12px;color:var(--muted)">Scan at the front desk, or text the link to a family</div>
+              <div style="display:flex;gap:7px;justify-content:center;margin-top:13px;flex-wrap:wrap">
+                <span class="chip">Main</span><span class="chip">Horizons</span><span class="chip">SCSE</span><span class="chip">Starfish</span>
+              </div>
+            </div>
+            <div class="sect-t">Tutor onboarding</div>
+            <div style="font-size:12.8px;color:#4A5568">The same flow covers new tutors — the same lecture you repeat every intake,
+              the same paperwork, a tutor code at the end. Keep it small: roster onboarding only.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">What the family gets back</h3></div>
+        <div class="pad">
+          <div style="display:flex;gap:12px;align-items:center;padding:14px;border-radius:12px;background:var(--green-050)">
+            <div style="width:40px;height:40px;border-radius:11px;background:var(--green);color:#fff;display:grid;place-items:center">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+            <div><div style="font-size:11.4px;color:#3C6B54;letter-spacing:.1em" class="mono">CODE ISSUED</div>
+              <div class="mono" style="font-size:19px;font-weight:700;color:var(--navy)">BL-2026-0114</div></div></div>
+          <div class="kv" style="margin-top:14px"><i>Texted to</i><b class="mono">203&#8226;&#8226;&#8226;&#8226;4417</b></div>
+          <div class="kv"><i>Added to</i><b>Family records</b></div>
+          <div class="kv"><i>Ready for</i><b>ParentSquare import</b></div>
+          <div class="kv"><i>Agreement</i><b>Main &middot; signed</b></div>
+          <div style="font-size:12px;color:var(--muted);margin-top:12px">Three minutes, one signature, one identity — and the family never fills this out twice, even if they later join a second track.</div>
+        </div>
+      </div>
+      <div class="card pad">
+        <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63;text-transform:uppercase">Why the codes block this</div>
+        <p style="font-size:13.4px;color:#4A5568;margin:12px 0 0">ParentSquare cannot key on a school-assigned student number for a program outside the district.
+          Until every family carries a code, this onboarding flow has nowhere to send them.</p>
+        <div class="meter gold" style="margin-top:14px;height:9px"><i style="width:${Math.round(S.coded/S.families*100)}%"></i></div>
+        <div style="display:flex;justify-content:space-between;font-size:12px;color:var(--muted);margin-top:7px">
+          <span>${S.coded} coded</span><span>${S.uncoded} to go</span></div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- 07 · AGREEMENTS ---------------- */
+function vForms(){
+  return `
+  <div style="display:grid;grid-template-columns:1fr 380px;gap:18px;align-items:start">
+    <div class="card">
+      <div class="card-h"><h3>Participant agreements</h3><span class="mono" style="margin-left:auto">148 signed &middot; 4 tracks</span></div>
+      <div class="lscroll" style="max-height:420px">
+        <table class="ledger">
+          <thead><tr><th>Family</th><th>Main</th><th>Horizons</th><th>SCSE</th><th>Starfish</th><th>Stored</th></tr></thead>
+          <tbody>${F.slice(0,26).map(f=>`<tr>
+            <td><div class="nm">${esc(f.last)}, ${esc(f.first)}</div><div class="sub">${codeOf(f)||'no code yet'}</div></td>
+            ${['main','horizons','scse','starfish'].map(p=>`<td>${f.progs.includes(p)
+              ?'<span class="chip chip-green" style="font-size:10.6px">signed</span>':'<span style="color:var(--muted);font-size:12px">—</span>'}</td>`).join('')}
+            <td><span class="chip">secure doc</span></td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+    <div style="display:grid;gap:16px">
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Same form, every track</h3></div>
+        <div class="pad" style="font-size:13.2px;color:#4A5568">
+          A family signs once per program they join — that part is yours and it stays. What changes is that a
+          <b>move between programs never demands a new signature</b>: the duplicate entry is deleted or reassigned on the back end.
+          <div style="margin-top:12px;display:grid;gap:8px">
+            <div style="display:flex;gap:9px"><span class="chip chip-navy">Delete</span><span>Remove a duplicate without touching the signed copy.</span></div>
+            <div style="display:flex;gap:9px"><span class="chip chip-navy">Reassign</span><span>Move a family to a subgroup and keep every signature on file.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Sign here</h3><span class="chip chip-gold" style="margin-left:auto">try it</span></div>
+        <div class="pad">
+          <canvas id="sig" width="620" height="180" style="width:100%;height:150px;border:1.6px dashed var(--line-2);border-radius:13px;background:#FCFAF6;cursor:crosshair;touch-action:none"></canvas>
+          <div style="display:flex;gap:8px;margin-top:11px"><button class="btn btn-ghost btn-sm" id="sigClear">Clear</button>
+            <button class="btn btn-navy btn-sm" id="sigDone">Sign &amp; file the agreement</button></div>
+          <div id="sigOut" style="font-size:12.4px;color:var(--green);margin-top:10px"></div>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- 08 · CALENDAR ---------------- */
+function vCalendar(){
+  const days=['Mon 14','Tue 15','Wed 16','Thu 17','Fri 18','Sat 19'];
+  const ev={1:[['3:30','Tutoring · 6 rooms','6 scholars','navy']],2:[['4:15','Horizons lab','4 scholars','green']],
+    3:[['3:30','Tutoring block','6 scholars','navy'],['6:00','SCSE family night','17 families','gold']],
+    4:[['4:00','Main session','5 scholars','navy']],5:[['9:00','Recovery calls','7 families','amber']],
+    0:[['10:00','Saturday lab','9 scholars','green']]};
+  return `
+  <div style="display:grid;grid-template-columns:1fr 330px;gap:18px;align-items:start">
+    <div class="card" style="overflow:hidden">
+      <div class="card-h"><h3>Week of 14 September</h3>
+        <div class="tabs" style="margin-left:auto"><button>Day</button><button class="on">Week</button><button>Month</button></div></div>
+      <div style="display:grid;grid-template-columns:repeat(6,1fr);min-height:400px;background:#fff">
+        ${days.map((d,i)=>`<div style="border-right:1px solid var(--line);padding:12px;${d.startsWith('Wed')?'background:#FCFAF6':''}">
+          <div class="mono" style="font-size:11px;letter-spacing:.08em;color:${d.startsWith('Wed')?'var(--navy)':'var(--muted)'};margin-bottom:12px">${d.toUpperCase()}</div>
+          ${(ev[i+1]||[]).map(e=>`<div style="border-left:3px solid var(--${e[3]==='gold'?'gold':e[3]});background:var(--paper-2);border-radius:8px;padding:10px;margin-bottom:9px">
+            <div class="mono" style="font-size:11px;color:var(--muted)">${e[0]}</div>
+            <div style="font-size:13px;font-weight:600;margin:3px 0 2px">${e[1]}</div>
+            <div style="font-size:11.4px;color:var(--muted)">${e[2]}</div>
+            <div style="font-size:10.6px;color:var(--green);margin-top:6px">check-in by code</div></div>`).join('')}
+        </div>`).join('')}
+      </div>
+    </div>
+    <div style="display:grid;gap:16px">
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Check a scholar in</h3></div>
+        <div class="pad">
+          <div style="font-size:12.8px;color:var(--muted);margin-bottom:9px">Type the last four digits of a participant code.</div>
+          <div style="display:flex;gap:8px"><input id="ckin" placeholder="0113" style="flex:1;padding:11px 13px;border:1px solid var(--line-2);border-radius:11px;font:inherit" class="mono">
+            <button class="btn btn-navy btn-sm" id="ckBtn">Check in</button></div>
+          <div id="ckOut" style="margin-top:12px;font-size:13px"></div>
+          <div style="font-size:11.8px;color:var(--muted);margin-top:10px">This is why the code matters in the diary too — "Rob" could be three different children.</div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">RSVPs</h3></div>
+        <div class="rowlist">
+          ${[['SCSE family night','Wed 6:00pm','11 of 17','gold'],['Saturday lab','Sat 10:00am','9 of 21','green'],['Recovery call block','Fri 9:00am','7 queued','amber']]
+            .map(r=>`<div class="rl"><span class="chip chip-${r[3]}">${r[2]}</span><div style="flex:1"><b style="font-size:13.4px">${r[0]}</b>
+              <div style="font-size:11.6px;color:var(--muted)">${r[1]}</div></div></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- 09 · DIRECTORY ---------------- */
+function vDirectory(){
+  const byProg=p=>F.filter(f=>f.progs.includes(p)).slice(0,8);
+  const block=(p,label,note)=>`
+    <div style="margin-bottom:26px">
+      <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:13px">
+        <h3 style="font-size:21px">${label}</h3><span class="chip chip-navy">${F.filter(f=>f.progs.includes(p)).length} families</span>
+        <span style="font-size:12.4px;color:var(--muted)">${note}</span></div>
+      <div class="constel">
+        ${byProg(p).map(f=>`<div class="famcard" data-fam="${f.id}">
+          <div style="display:flex;gap:10px;align-items:center;margin-bottom:10px">
+            <div class="av">${initials(f)}</div>
+            <div><b style="font-size:13.8px">${esc(f.last)}, ${esc(f.first)}</b>
+              <div style="font-size:11.4px;color:var(--muted)">grade ${f.grade} &middot; ${f.lang}</div></div></div>
+          <div class="code">${codeOf(f)||'no code yet'}</div></div>`).join('')}
+      </div>
+    </div>`;
+  return `
+  <div class="card pad" style="margin-bottom:20px;display:flex;gap:20px;align-items:center;flex-wrap:wrap">
+    <div><div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63">PRIVACY</div>
+      <div style="font-size:13.6px;margin-top:5px">Program staff see a code and a check mark. Household detail stays behind a role.</div></div>
+    <div style="display:flex;gap:9px;margin-left:auto;align-items:center">
+      <span style="font-size:12.6px;color:var(--muted)">Mask household detail</span><span class="tog on" id="maskTog"></span>
+    </div>
+  </div>
+  ${block('main','Main','The comprehensive sheet — families stay here even if they leave a subgroup.')}
+  ${block('horizons','Horizons','Saturday enrichment labs.')}
+  ${block('scse','SCSE','Stamford Charter School for Excellence.')}
+  ${block('starfish','Starfish','Four rows pasted in by hand — no agreement signed yet.')}
+  ${block('bffs','BFFS','Thirteen 9th and 10th graders under a name that appears in no form. Still unexplained.')}`;
+}
+
+/* ---------------- 10 · TUTORS ---------------- */
+function vTutors(){
+  const col=(stage,title,note)=>{
+    const t=BL.TUTORS.filter(x=>x.stage===stage);
+    return `<div class="kcol"><h4>${title} &middot; ${t.length}</h4>
+      <div style="font-size:11.6px;color:var(--muted);margin:-4px 0 10px">${note}</div>
+      ${t.map(x=>`<div class="kcard"><b>${x.n}</b><span class="sub">${x.sub} &middot; ${x.subj}</span>
+        <div style="display:flex;gap:7px;margin-top:9px;align-items:center"><span class="code" style="font-size:10.6px">${x.code}</span>
+          <span class="chip" style="font-size:10.6px;margin-left:auto">${x.sch} scholars</span></div></div>`).join('')||'<div style="font-size:12.4px;color:var(--muted);padding:8px">Empty</div>'}</div>`;
+  };
+  return `
+  <div class="grid3" style="margin-bottom:18px">
+    ${statCard('Active tutors','5','carrying 14 scholars between them','')}
+    ${statCard('Weekly hours logged','147','for the grant report','')}
+    ${statCard('Onboarding pipeline','4','two with references outstanding','amber')}
+  </div>
+  <div class="kan">
+    ${col('references','References outstanding','Waiting on two names and a call back.')}
+    ${col('onboarding','Onboarding','Orientation script sent, agreement unsigned.')}
+    ${col('active','Active on the roster','Each tutor carries a permanent code.')}
+  </div>
+  <div class="card" style="margin-top:18px">
+    <div class="card-h"><h3 style="font-size:16px">Tutor onboarding script — editable here</h3><span class="chip chip-gold" style="margin-left:auto">no new PowerPoint</span></div>
+    <div class="pad" style="display:grid;gap:11px">
+      ${['Welcome — what Beyond Limits is and why it exists','Safeguarding and what happens in a session room','Tutoring expectations + the check-in sheet','How to log hours and mark a missed session','Signing the tutor agreement and getting a code']
+        .map((s,i)=>`<div style="display:flex;gap:12px;align-items:center;padding:12px 14px;border:1px solid var(--line);border-radius:11px;background:#FCFAF6">
+          <span class="mono" style="font-size:11.4px;color:var(--muted)">${String(i+1).padStart(2,'0')}</span>
+          <span style="flex:1;font-size:13.6px">${s}</span>
+          <svg class="ic ic-sm" viewBox="0 0 24 24" style="color:var(--muted)"><path d="M4 20h16M14.5 3.5a2.1 2.1 0 013 3L7 17l-4 1 1-4z"/></svg></div>`).join('')}
+    </div>
+  </div>`;
+}
+
+/* ---------------- 11 · PARENTSQUARE SYNC ---------------- */
+function vExport(){
+  const mapping=[['Family ID / External ID','participant_code'],['Student first name','first'],['Student last name','last'],
+    ['Date of birth','dob'],['Grade','grade'],['Primary contact phone','phone'],['Primary contact email','email'],
+    ['Preferred language','lang_code'],['School','school'],['Program / group','prog_label'],['Agreement on file','agreement_yn']];
+  return `
+  <div style="display:grid;grid-template-columns:1fr 1.15fr;gap:18px;align-items:start">
+    <div class="card">
+      <div class="card-h"><h3>Import mapping</h3><span class="chip chip-green" style="margin-left:auto">validated</span></div>
+      <div class="pad" style="padding-top:6px">
+        <div style="font-size:13px;color:var(--muted);margin:10px 0 14px">Beyond Limits is not in the district, so the school-assigned number does not exist for these families.
+          Your participant code <b>is</b> the identifier.</div>
+        <table class="maptbl">
+          ${mapping.map(m=>`<tr><td>${m[0]}</td><td><span class="code">${m[1]}</span></td><td style="text-align:right">
+            <svg class="ic ic-sm" viewBox="0 0 24 24" style="color:var(--green)"><path d="M20 6L9 17l-5-5"/></svg></td></tr>`).join('')}
+        </table>
+        <button class="btn btn-navy btn-sm" style="width:100%;justify-content:center;margin-top:16px" id="dlCsv">Download the ParentSquare file (CSV)</button>
+        <div id="dlOut" style="font-size:12.4px;color:var(--green);margin-top:10px"></div>
+      </div>
+    </div>
+    <div style="display:grid;gap:16px">
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Pre-flight validation</h3><button class="btn btn-navy btn-sm" style="margin-left:auto" id="runVal">Run validation</button></div>
+        <div class="pad"><div class="term" id="term"><span class="di">$ ready — press "Run validation" to check ${S.families} families against the ParentSquare import shape</span></div></div>
+      </div>
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Switch-over plan</h3></div>
+        <div class="rowlist">
+          ${[['Step 1','Clean family list','done'],['Step 2','One code per family','in progress'],['Step 3','Export &amp; validate','now'],
+             ['Step 4','Switch the family channel','next'],['Step 5','Retire Remind','after']].map(r=>`<div class="rl">
+            <span class="chip ${r[2]==='done'?'chip-green':r[2]==='now'?'chip-navy':''}">${r[2]}</span>
+            <div style="flex:1"><b style="font-size:13.4px">${r[1]}</b></div>
+            <span class="mono" style="font-size:11px;color:var(--muted)">${r[0]}</span></div>`).join('')}
+        </div>
+      </div>
+      <div class="card pad" style="background:var(--navy-050);border-color:#D3E0F2">
+        <b style="font-size:13.6px">Your copy stays authoritative.</b>
+        <div style="font-size:12.8px;color:#41506B;margin-top:6px">ParentSquare gets what it needs to message families. Codes, agreements and the roster
+          remain yours — export anytime, in the same shape.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- 12 · INSIGHTS ---------------- */
+function vInsights(){
+  const months=[['Jan',62],['Feb',74],['Mar',81],['Apr',88],['May',95],['Jun',101],['Jul',108],['Aug',112],['Sep',113]];
+  return `
+  <div class="grid3" style="margin-bottom:18px">
+    <div class="card pad" style="display:flex;gap:18px;align-items:center">
+      <div class="donut" style="--p:${Math.round(S.coded/S.families*100)}%"><b>${Math.round(S.coded/S.families*100)}%</b></div>
+      <div><div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63">CODED</div>
+        <div style="font-size:13.4px;margin-top:6px;color:#4A5568">${S.coded} of ${S.families} families carry a permanent code.</div></div>
+    </div>
+    <div class="card pad">
+      <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63">FAMILIES SERVED</div>
+      <div style="font-family:var(--f-d);font-size:38px;line-height:1;margin:8px 0 10px">113</div>
+      <div class="chart" style="height:88px">
+        ${months.map(m=>`<div class="bar" style="height:${m[1]}%"><span>${m[0]}</span></div>`).join('')}
+      </div>
+      <div style="font-size:12px;color:var(--muted);margin-top:26px">Active families by month, 2026.</div>
+    </div>
+    <div class="card pad">
+      <div class="mono" style="font-size:10.4px;letter-spacing:.14em;color:#6B6A63">GRANT-READY NUMBERS</div>
+      <div style="display:grid;gap:12px;margin-top:13px">
+        ${[['Sessions delivered this term','1,284'],['Tutor hours logged','147'],['Average sessions per scholar','11.3'],
+           ['Attendance rate','93%'],['Families below 80% attendance','2']]
+          .map(r=>`<div style="display:flex;justify-content:space-between;font-size:13px;border-bottom:1px dotted var(--line);padding-bottom:8px">
+            <span style="color:#4A5568">${r[0]}</span><b>${r[1]}</b></div>`).join('')}
+      </div>
+      <button class="btn btn-ghost btn-sm" style="width:100%;justify-content:center;margin-top:14px">Export the funder summary</button>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="card">
+      <div class="card-h"><h3 style="font-size:16px">Equity of access</h3><span class="mono" style="margin-left:auto">by track</span></div>
+      <div class="pad" style="display:grid;gap:14px">
+        ${[['Main',110,94],['Horizons',21,81],['SCSE',17,76],['Starfish',4,0],['BFFS',13,0]]
+          .map(r=>`<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+            <span>${r[0]}</span><span style="color:var(--muted)"><b style="color:var(--ink)">${r[1]}</b> families &middot; ${r[2]}% coded</span></div>
+            ${meter(r[2], r[2]>85?'g':r[2]>50?'':'a')}</div>`).join('')}
+        <div style="font-size:12.2px;color:var(--muted)">Starfish and BFFS sit at zero — those two tracks are where the roster breaks down today.</div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-h"><h3 style="font-size:16px">Language coverage</h3><span class="mono" style="margin-left:auto">family's own setting</span></div>
+      <div class="pad" style="display:grid;gap:13px">
+        ${BL.LANGS.map(l=>`<div><div style="display:flex;justify-content:space-between;font-size:13px;margin-bottom:6px">
+          <span>${l[0]}</span><span style="color:var(--muted)">${l[2]}% of families</span></div>${meter(l[2]*2.2,'gold')}</div>`).join('')}
+        <div style="font-size:12.2px;color:var(--muted);margin-top:4px">Every send is translated per family — the read rate for Spanish-language messages is the highest of any group.</div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- 13 · SETTINGS ---------------- */
+function vSettings(){
+  return `
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start">
+    <div style="display:grid;gap:16px">
+      <div class="risk">
+        <span class="chip chip-red" style="margin-bottom:10px">Act on this</span>
+        <h3 style="font-size:18px">The roster and the code script live on a personal account</h3>
+        <div style="font-size:13.4px;color:#4A5568;margin-top:9px">
+          Every name, birthday, home address, phone, income band and code — plus the script that generates them — sits on
+          <span class="mono">maansishah@gmail.com</span>, running on a personal login. If either account is closed or lost,
+          Beyond Limits loses the data or the automation.
+        </div>
+        <div style="font-size:13.4px;color:#4A5568;margin-top:11px"><b>Transferring ownership is not enough.</b>
+          Triggers do not travel with a file — they have to be recreated afterwards or code generation silently stops.
+          A silent stop is worse than a loud failure.</div>
+        <div style="display:flex;gap:9px;margin-top:15px;flex-wrap:wrap">
+          <button class="btn btn-navy btn-sm">Start the ownership transfer</button>
+          <button class="btn btn-ghost btn-sm">Schedule a trigger health check</button>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Automations</h3></div>
+        <div class="pad" style="padding-top:6px">
+          ${[['Missed-session text','on'],['Voice-call escalation at 3','on'],['Tutor check-in at 4','on'],
+             ['Friday follow-up list','on'],['ParentSquare nightly sync','off'],['Weekly grant-hours rollup','on']]
+            .map(r=>`<div class="sw"><div><b style="font-size:13.8px">${r[0]}</b></div><span class="tog ${r[1]==='on'?'on':''}"></span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;gap:16px">
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Defaults</h3></div>
+        <div class="pad">
+          <div class="kv"><i>Code series</i><b class="mono">BL-2026-####</b></div>
+          <div class="kv"><i>Program</i><b>its own column, never inside the code</b></div>
+          <div class="kv"><i>Matching keys</i><b>name + date of birth</b></div>
+          <div class="kv"><i>Uncertain match</i><b>hold for the director</b></div>
+          <div class="kv"><i>Default language</i><b>follow the family's setting</b></div>
+          <div class="kv"><i>Timezone</i><b>America/New_York</b></div>
+          <div style="font-size:12.2px;color:var(--muted);margin-top:12px">The format change lands now, at nine codes — not later at 113.
+            An identifier that changes when a family moves programs is not an identifier.</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-h"><h3 style="font-size:16px">Open questions for Andy</h3><span class="chip chip-amber" style="margin-left:auto">6</span></div>
+        <div class="rowlist">
+          ${['Which copy survives for Annabella Rojas and Anthony Lopez?',
+             'Has any participant code been used outside the spreadsheet — printed, texted, in a calendar? This gates the format change.',
+             'What is BFFS? Thirteen 9th and 10th graders under a name in no form.',
+             'Who owns the spreadsheet and the script? Both sit on a personal account today.',
+             'Do the four Starfish families need to sign a real Starfish agreement? They were copied, never signed.',
+             'Can we get ParentSquare\u2019s import format before shaping the data to it?'].map((q,i)=>`<div class="rl">
+            <span class="mono" style="color:var(--muted);font-size:11.4px;width:18px">${i+1}</span>
+            <span style="flex:1;font-size:13.2px">${q}</span></div>`).join('')}
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+/* ---------------- router + behaviour ---------------- */
+const VIEWS={home:vHome,records:vRecords,review:vReview,messages:vMessages,attendance:vAttendance,
+  onboarding:vOnboarding,forms:vForms,calendar:vCalendar,directory:vDirectory,tutors:vTutors,export:vExport,insights:vInsights,settings:vSettings};
+const TITLES={home:['Command center','Wednesday, 16 September 2026 &middot; 4 sessions today'],records:['Family records','One family, one row, one code'],
+  review:['Review queue','Two families need a decision &middot; nine defects logged'],messages:['Messaging','One message, every language'],
+  attendance:['Attendance','Missed-session recovery &middot; 7 opens'],onboarding:['Onboarding','QR &rarr; orientation &rarr; agreement &rarr; code'],
+  forms:['Agreements','Participation agreements &amp; e-signature'],calendar:['Calendar','Sessions, check-ins and RSVPs'],
+  directory:['Directory','113 families across four tracks and one mystery'],tutors:['Tutors','Roster, onboarding pipeline, hours'],
+  export:['ParentSquare sync','Your code is the identifier'],insights:['Insights','Grant-ready numbers'],settings:['Settings','Automations, defaults and ownership']};
+function go(v){
+  if(!VIEWS[v])v='home'; STATE.view=v;
+  document.getElementById('view').innerHTML=VIEWS[v]();
+  document.getElementById('crumb').innerHTML=TITLES[v][0]+'<small>'+TITLES[v][1]+'</small>';
+  document.querySelectorAll('.rnav').forEach(a=>a.classList.toggle('on',a.dataset.v===v));
+  requestAnimationFrame(()=>{document.querySelectorAll('.meter > i').forEach(i=>{const w=i.style.width;i.style.width='0';requestAnimationFrame(()=>i.style.width=w);});});
+  wire(v); if(location.hash.slice(2)!==v) history.replaceState(null,'','#/'+v); window.scrollTo({top:0,behavior:'smooth'});
+}
+function wire(v){
+  document.querySelectorAll('[data-go]').forEach(b=>b.onclick=()=>go(b.dataset.go));
+  document.querySelectorAll('[data-fam]').forEach(r=>r.onclick=()=>openFam(r.dataset.fam));
+  document.querySelectorAll('[data-f]').forEach(b=>b.onclick=()=>{STATE.filter=b.dataset.f;go('records');});
+  document.querySelectorAll('[data-seg]').forEach(s=>s.onclick=()=>{const k=s.dataset.seg;
+    STATE.seg=STATE.seg.includes(k)?STATE.seg.filter(x=>x!==k):STATE.seg.concat([k]);
+    if(!STATE.seg.length)STATE.seg=['all']; go('messages');});
+  document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>{STATE.lang=b.dataset.lang;
+    document.getElementById('msgBody').value=MSG_TXT[STATE.lang];
+    document.getElementById('phoneTxt').innerHTML=MSG_TXT[STATE.lang].replace('{CODE}','BL-2026-0113');});
+  document.querySelectorAll('[data-merge]').forEach(b=>b.onclick=()=>{b.textContent='Merged — both agreements kept';b.classList.add('btn-gold');STATE.merged=true;});
+  document.querySelectorAll('.tog').forEach(t=>t.onclick=()=>t.classList.toggle('on'));
+  const b1=document.getElementById('bulkIssue'),b2=document.getElementById('bulkIssue2');
+  const run=()=>{if(STATE.codesIssued){go('records');return;} STATE.codesIssued=true; S.coded=S.families;S.uncoded=0;
+    F.forEach(f=>{if(!codeOf(f)){f.codes=['BL-2026-'+String(S.coded++).padStart(4,'0')];}
+      if(f.flag==='duplicate'&&f.codes[1])f.codes=[codeOf(f)];});
+    go('records');
+    const bar=document.getElementById('view').innerHTML; go('home');
+    let p=Math.round(9/S.families*100);
+    const t=setInterval(()=>{p+=2; if(p>=100){p=100;clearInterval(t);}
+      const a=document.getElementById('covBar'); if(a)a.style.width=p+'%';
+      const b=document.getElementById('covNum'); if(b)b.textContent=p+'%';
+      const c=document.getElementById('covBar2'); if(c)c.style.width=p+'%';},18);};
+  if(b1)b1.onclick=run; if(b2)b2.onclick=run;
+  const sv=document.getElementById('runVal');
+  if(sv)sv.onclick=()=>{const t=document.getElementById('term');
+    const lines=[['di','$ bl validate --target parentsquare --file bl-families.csv'],
+      ['ok','✓ 113 families read from the family records list'],
+      ['ok','✓ '+S.coded+' participant codes present, format BL-2026-####'],
+      ['wr','! '+(S.coded?S.families-S.coded:105)+' families have no code yet — they will be rejected by the import if used as the ID'],
+      ['ok','✓ 0 duplicate codes across all tracks'],
+      ['wr','! 1 duplicate identity held for review (Shalauddin, Ethan)'],
+      ['ok','✓ 113 preferred-language values mapped (en, es, pt, ht, sq, ar, bn, uk, zh)'],
+      ['ok','✓ 4 Starfish rows flagged: no agreement on file'],
+      ['ok','✓ phone numbers normalised to E.164, 0 invalid'],
+      ['di','$ done — 3 notes, 0 errors']];
+    t.innerHTML=''; let i=0;
+    const t2=setInterval(()=>{if(i>=lines.length){clearInterval(t2);return;}
+      t.innerHTML+='<div class="'+lines[i][0]+'">'+lines[i][1]+'</div>'; i++; t.scrollTop=t.scrollHeight;},260);};
+  const d=document.getElementById('dlCsv'); if(d)d.onclick=()=>{downloadCSV(F);
+    document.getElementById('dlOut').textContent='Saved bl-families-parentsquare.csv — '+F.length+' rows.';};
+  const rn=document.getElementById('runRules');
+  if(rn)rn.onclick=()=>{const thr=document.getElementById('thr').value,win=document.getElementById('win').value;
+    document.getElementById('ruleOut').innerHTML='<div style="padding:13px;border-radius:11px;background:var(--green-050);color:#2C5B45">'+
+      '<b>Check complete.</b> '+win+' sessions reviewed, threshold '+thr+'. 7 families matched: 5 texts queued in 4 languages, '+
+      '1 voice call, 1 tutor check-in. Nothing sent twice.</div>';};
+  const ck=document.getElementById('ckBtn');
+  if(ck)ck.onclick=()=>{const val=document.getElementById('ckin').value.trim();
+    const f=F.find(x=>(codeOf(x)||'').endsWith(val))||F.find(x=>(codeOf(x)||'').includes(val));
+    document.getElementById('ckOut').innerHTML=f?'<div style="padding:12px;border-radius:11px;background:var(--green-050);color:#2C5B45"><b>'+f.first+' '+f.last+'</b> checked in on '+codeOf(f)+'. Streak now '+((f.sessions%9)+1)+'.</div>'
+      :'<div style="padding:12px;border-radius:11px;background:var(--amber-050);color:#7A4E00">No family carries that code. Try 0113 or 0002.</div>';};
+  const sc=document.getElementById('sig');
+  if(sc){const ctx=sc.getContext('2d');ctx.lineWidth=2.4;ctx.lineCap='round';ctx.strokeStyle='#12305C';let dr=false;
+    const pos=e=>{const r=sc.getBoundingClientRect();return[(e.clientX-r.left)*(sc.width/r.width),(e.clientY-r.top)*(sc.height/r.height)];};
+    sc.onpointerdown=e=>{dr=true;ctx.beginPath();ctx.moveTo(...pos(e));};
+    sc.onpointermove=e=>{if(dr){ctx.lineTo(...pos(e));ctx.stroke();}};
+    window.addEventListener('pointerup',()=>dr=false);
+    document.getElementById('sigClear').onclick=()=>ctx.clearRect(0,0,sc.width,sc.height);
+    document.getElementById('sigDone').onclick=()=>document.getElementById('sigOut').textContent='Signed and filed to the family record. No re-submission later.';}
+  const mk=document.getElementById('maskTog'); if(mk)mk.onclick=()=>mk.classList.toggle('on');
+  const qr=document.getElementById('qr');
+  if(qr&&window.qrcode){try{const q=qrcode(0,'M');q.addData('https://beyondlimits.example/join?code=BL-2026-0114');q.make();
+    qr.innerHTML=q.createImgTag(5,0);qr.querySelector('img').style.imageRendering='pixelated';}catch(e){qr.innerHTML='<div style="font-size:12px;color:var(--muted)">QR unavailable offline</div>';}}
+  else if(qr){qr.innerHTML='<div style="font-size:12.4px;color:var(--muted)">QR loads from CDN</div>';}
+}
+function downloadCSV(rows){
+  const head=['external_id','first','last','dob','grade','phone','email','lang_code','school','program','agreement'];
+  const lines=[head.join(',')].concat(rows.map(f=>[codeOf(f)||'',f.first,f.last,f.dob,f.grade,f.phone,f.email,f.langCode,
+    '"'+f.school+'"','"'+f.progs.map(p=>PROG[p]).join(' + ')+'"',f.progs.length].join(',')));
+  const blob=new Blob([lines.join('\n')],{type:'text/csv'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='bl-families-parentsquare.csv';a.click();
+}
+/* global search */
+const q=document.getElementById('q'),sr=document.getElementById('sres');
+q.addEventListener('input',()=>{const v=q.value;const res=BL.find(v);
+  if(!res.length){sr.classList.remove('on');return;}
+  sr.innerHTML=res.map(f=>`<div class="s" data-fam="${f.id}">
+    <div style="width:30px;height:30px;border-radius:9px;background:var(--navy);color:#fff;display:grid;place-items:center;font-size:12px;font-family:var(--f-d)">${initials(f)}</div>
+    <div style="flex:1"><b>${esc(f.last)}, ${esc(f.first)}</b><div style="font-size:11.4px;color:var(--muted)">${f.progs.map(p=>PROG[p]).join(' + ')} &middot; grade ${f.grade}</div></div>
+    <span class="code">${codeOf(f)||'no code'}</span></div>`).join('');
+  sr.classList.add('on');
+  sr.querySelectorAll('.s').forEach(s=>s.onclick=()=>{sr.classList.remove('on');q.value='';openFam(s.dataset.fam);
+    go(['home','records','review','messages','attendance','onboarding','forms','calendar','directory','tutors','export','insights','settings'].includes(STATE.view)?STATE.view:'records');});
+});
+document.addEventListener('click',e=>{if(!e.target.closest('.search'))sr.classList.remove('on');});
+document.querySelectorAll('.rnav').forEach(a=>a.onclick=()=>go(a.dataset.v));
+document.getElementById('newFamily').onclick=()=>go('onboarding');
+window.addEventListener('keydown',e=>{if(e.key==='Escape')closeDrawer();});
+go((location.hash||'#/home').slice(2));
+</script></body></html>

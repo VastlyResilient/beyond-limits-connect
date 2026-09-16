@@ -1,0 +1,428 @@
+<!DOCTYPE html><html lang="en" class="js"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Beyond Limits Connect — one family, one code, nothing slips</title>
+<meta name="description" content="The family engagement platform built for the Beyond Limits Academic Program: participant codes, multilingual messaging, attendance recovery and a clean ParentSquare migration.">
+<link rel="icon" href="assets/bl-mark.png"><link rel="stylesheet" href="assets/brand.css">
+<style>
+/* ---------- LANDING ---------- */
+.nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(14px) saturate(150%);background:rgba(251,248,243,.86);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:30px;height:86px}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:14.5px;font-weight:500}
+nav-links a{text-decoration:none;color:#2C3852;font-weight:550;padding:6px 2px;border-bottom:1.5px solid transparent;transition:.2s}
+.nav-links a:hover{color:var(--navy);border-color:var(--gold)}
+.nav-cta{display:flex;gap:10px;margin-left:6px}
+@media(max-width:960px){.nav-links{display:none}}
+
+.hero{position:relative;overflow:hidden;padding:74px 0 60px}
+.hero-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:56px;align-items:center}
+@media(max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:44px}}
+.hero h1 span{display:block;padding-bottom:.03em}
+.hero h1 span:nth-child(3){font-style:italic;font-variation-settings:"SOFT" 60,"WONK" 1}
+.hero .lede{margin:24px 0 32px;max-width:50ch}
+.hero-cta{display:flex;gap:13px;flex-wrap:wrap;align-items:center}
+.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:36px;padding-top:26px;border-top:1px dashed var(--line-2);font-size:13px;color:var(--muted)}
+.trust b{font-family:var(--f-d);font-size:17px;color:var(--navy);display:block;line-height:1.15;font-weight:600}
+.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.5;pointer-events:none}
+.b1{width:520px;height:520px;background:#FDEBB8;top:-190px;right:-120px}
+.b2{width:400px;height:400px;background:#D8E5F7;bottom:-190px;left:-140px}
+
+/* signature: the family record card */
+.recard{background:#fff;border:1px solid var(--line);border-radius:var(--r-xl);box-shadow:var(--sh-3);padding:0;overflow:hidden;position:relative}
+.recard-top{background:var(--navy);color:#fff;padding:16px 22px;display:flex;align-items:center;gap:12px}
+.recard-top .mono{font-size:11.5px;letter-spacing:.16em;opacity:.72;text-transform:uppercase}
+.recard-body{padding:24px 24px 20px}
+.field{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dotted var(--line);font-size:14px}
+.field:last-of-type{border-bottom:0}
+.field span:first-child{color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.08em;font-family:var(--f-m)}
+.stamp{position:absolute;right:18px;bottom:16px;font-family:var(--f-m);font-size:10.5px;letter-spacing:.12em;color:var(--green);
+  border:1.5px solid var(--green);border-radius:7px;padding:4px 9px;transform:rotate(-6deg);opacity:.9;background:#fff}
+.thread{display:flex;flex-direction:column;gap:9px;margin-top:16px}
+.thread .row{display:flex;gap:10px;align-items:flex-start;font-size:13.2px;padding:10px 13px;border-radius:12px;background:var(--paper-2);border:1px solid var(--line);opacity:0;transform:translateY(7px);animation:rise .5s forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.thread .row.ok{background:var(--green-050);border-color:#CFE6DA}
+.thread .row.hold{background:var(--amber-050);border-color:#F1DFB8}
+.thread .k{font-family:var(--f-m);font-size:11px;letter-spacing:.06em;color:var(--muted);flex:none;padding-top:1px}
+
+.band{background:var(--navy);color:#fff;padding:30px 0}
+.band-in{display:grid;grid-template-columns:repeat(5,1fr);gap:26px}
+@media(max-width:860px){.band-in{grid-template-columns:repeat(2,1fr)}}
+.band b{font-family:var(--f-d);font-size:34px;display:block;line-height:1;color:#fff}
+.band span{font-size:12.5px;opacity:.7;letter-spacing:.05em}
+
+.sec{padding:84px 0}
+.sec-head{max-width:760px;margin-bottom:44px}
+.sec-head .eyebrow{margin-bottom:14px;display:block}
+.sec-head p{color:#41506B;font-size:17.5px;margin-top:16px}
+
+/* catalog: numbered index cards, deliberately uneven */
+.cat{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}
+.cat > article{background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:24px;box-shadow:var(--sh-1);
+  position:relative;transition:transform .25s cubic-bezier(.2,.85,.3,1),box-shadow .25s}
+.cat > article:hover{transform:translateY(-4px);box-shadow:var(--sh-2)}
+.cat .num{font-family:var(--f-m);font-size:11px;letter-spacing:.16em;color:var(--gold);font-weight:700}
+.cat h3{margin:12px 0 8px;font-size:21px}
+.cat p{font-size:14.2px;color:#4C586E;margin:0}
+.cat .ic{width:30px;height:30px;color:var(--navy);stroke-width:1.5;margin-bottom:4px}
+.sp1{grid-column:span 5}.sp2{grid-column:span 4}.sp3{grid-column:span 3}.sp4{grid-column:span 6}.sp7{grid-column:span 7}
+@media(max-width:940px){.cat > article{grid-column:span 12!important}}
+
+.tag{position:absolute;top:18px;right:18px;font-family:var(--f-m);font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);border:1px solid var(--line-2);border-radius:100px;padding:3px 9px}
+
+/* duplicate case study */
+.case{display:grid;grid-template-columns:1fr auto 1fr;gap:26px;align-items:center;background:#fff;border:1px solid var(--line);
+  border-radius:var(--r-lg);padding:34px;box-shadow:var(--sh-2);position:relative;overflow:hidden}
+@media(max-width:900px){.case{grid-template-columns:1fr}}
+.sub-card{border:1px solid var(--line);border-radius:var(--r-md);padding:18px;background:var(--paper)}
+.sub-card .who{font-family:var(--f-d);font-size:19px;color:var(--ink)}
+.sub-card .meta{font-size:12.8px;color:var(--muted);margin-top:3px}
+.converge{display:flex;flex-direction:column;align-items:center;gap:8px;min-width:110px}
+.converge .arrow{font-family:var(--f-m);font-size:22px;color:var(--gold);letter-spacing:.1em}
+.converge .lbl{font-size:11px;font-family:var(--f-m);letter-spacing:.1em;color:var(--muted);text-align:center;text-transform:uppercase}
+.merged{border:2px solid var(--green);background:var(--green-050);border-radius:var(--r-md);padding:18px;text-align:center}
+
+/* programs shelf — book spines */
+.shelf{display:flex;gap:14px;align-items:flex-end;flex-wrap:wrap}
+.spine{flex:1;min-width:150px;background:linear-gradient(160deg,var(--navy),var(--navy-900));color:#fff;border-radius:8px 8px 4px 4px;
+  padding:22px 16px 18px;position:relative;box-shadow:var(--sh-2);transition:transform .3s cubic-bezier(.2,.85,.3,1)}
+.spine:nth-child(2){background:linear-gradient(160deg,#2A5A9B,#16355F);height:196px}
+.spine:nth-child(3){background:linear-gradient(160deg,#3E6E4F,#20432F)}
+.spine:nth-child(4){background:linear-gradient(160deg,#9A5F1E,#5E3A10)}
+.spine:nth-child(1){height:230px}
+.spine:nth-child(5){height:176px;background:linear-gradient(160deg,#5C5A6E,#2F2E3A)}
+.spine:hover{transform:translateY(-8px)}
+.spine .cnt{font-family:var(--f-d);font-size:40px;line-height:1}
+.spine .nm{font-weight:600;font-size:15px;margin-top:6px}
+.spine .sub{font-size:11.5px;opacity:.68;margin-top:2px}
+.spine::before{content:"";position:absolute;left:14px;right:14px;top:12px;height:2px;background:var(--gold);opacity:.85;border-radius:2px}
+
+/* rule ladder */
+.ladder{display:grid;gap:12px}
+.rung{display:grid;grid-template-columns:74px 1fr auto;gap:18px;align-items:center;background:#fff;border:1px solid var(--line);
+  border-left:4px solid var(--gold);border-radius:var(--r-sm);padding:16px 20px;box-shadow:var(--sh-1)}
+.rung:nth-child(2){border-left-color:#E0A83A}
+.rung:nth-child(3){border-left-color:var(--amber)}
+.rung:nth-child(4){border-left-color:var(--red)}
+.rung .n{font-family:var(--f-d);font-size:30px;color:var(--navy);line-height:1}
+.rung .t{font-weight:600;font-size:15.5px}
+.rung .d{font-size:13.4px;color:var(--muted)}
+
+/* migration flow */
+.flow{display:flex;gap:12px;align-items:stretch;flex-wrap:wrap}
+.node{flex:1;min-width:190px;background:#fff;border:1px solid var(--line);border-radius:var(--r-md);padding:20px;box-shadow:var(--sh-1)}
+.node.here{background:var(--navy);color:#fff;border-color:var(--navy)}
+.node.here .eyebrow,.node.here p{color:rgba(255,255,255,.78)}
+.node.here h3{color:#fff}
+.arrowsep{align-self:center;color:var(--gold);font-size:22px;font-family:var(--f-m)}
+
+/* photos */
+.pgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;grid-auto-rows:200px}
+@media(max-width:880px){.pgrid{grid-template-columns:1fr 1fr;grid-auto-rows:170px}}
+.pgrid figure{margin:0;border-radius:var(--r-md);overflow:hidden;position:relative;box-shadow:var(--sh-2);background:var(--paper-3)}
+.pgrid img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.85,.3,1)}
+.pgrid figure:hover img{transform:scale(1.045)}
+.pgrid figcaption{position:absolute;inset:auto 0 0 0;padding:34px 16px 13px;color:#fff;font-size:13px;
+  background:linear-gradient(transparent,rgba(11,28,54,.88))}
+.pgrid .span2{grid-column:span 2}
+
+.quoteband{background:var(--paper-2);border-block:1px solid var(--line)}
+.sponsors{display:flex;gap:34px;align-items:center;flex-wrap:wrap}
+.sponsors img{height:52px;width:auto;filter:grayscale(1);opacity:.62;transition:.3s}
+.sponsors img:hover{filter:none;opacity:1}
+
+footer{background:var(--navy-900);color:#C9D6E8;padding:52px 0 34px;font-size:14px}
+footer a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.25)}
+.fgrid{display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:34px}
+@media(max-width:880px){.fgrid{grid-template-columns:1fr 1fr}}
+footer h4{color:#fff;font-size:14px;letter-spacing:.12em;text-transform:uppercase;font-family:var(--f-m);font-weight:600;margin-bottom:14px}
+footer ul{list-style:none;padding:0;margin:0;display:grid;gap:9px}
+.fb{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-top:38px;padding-top:20px;border-top:1px solid rgba(255,255,255,.14);font-size:12.5px;color:#8FA3C0}
+</style></head><body>
+
+<header class="nav"><div class="wrap nav-in">
+  <a class="lockup sm" href="index.html"><img src="assets/bl-logo.png" alt="Beyond Limits Academics — a program of Stamford Peace Youth Foundation"></a>
+  <nav class="nav-links">
+    <a href="#platform">Platform</a><a href="#codes">Participant codes</a><a href="#attendance">Attendance</a>
+    <a href="#migration">ParentSquare migration</a><a href="family.html">For families</a>
+  </nav>
+  <div class="nav-cta">
+    <a class="btn btn-ghost btn-sm" href="studio.html">Sign in</a>
+    <a class="btn btn-navy btn-sm" href="studio.html#/home">Open the console</a>
+  </div>
+</div></header>
+
+<section class="hero"><div class="blob b1"></div><div class="blob b2"></div>
+<div class="wrap hero-grid">
+  <div>
+    <span class="eyebrow">A program of the Stamford Peace Youth Foundation</span>
+    <h1 style="margin-top:18px"><span>One family.</span><span>One code.</span><span class="hl" style="background:none;-webkit-text-stroke:0">Nothing slips.</span></h1>
+    <p class="lede">Beyond Limits Connect is the family engagement system built for <b>this</b> program — 113 active families,
+      four tracks, and no school-issued student number to lean on. Every family gets a permanent participant code,
+      every message arrives in the right language, and nobody falls off the roster when Remind goes dark.</p>
+    <div class="hero-cta">
+      <a class="btn btn-navy btn-lg" href="studio.html#/records">
+        <svg class="ic" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg>
+        See the family record engine</a>
+      <a class="btn btn-ghost btn-lg" href="family.html">View the family app</a>
+    </div>
+    <div class="trust">
+      <div><b>Free tutoring</b>and informal mentoring</div><div><b>Grades 4&ndash;10</b>Stamford &amp; lower Fairfield County</div>
+      <div><b>Since 2014</b>Long Ridge Road headquarters</div><div><b>One roster</b>Main &middot; Horizons &middot; SCSE &middot; Starfish</div>
+    </div>
+  </div>
+
+  <div>
+    <div class="recard">
+      <div class="recard-top">
+        <svg class="ic" viewBox="0 0 24 24" style="stroke:#F5D06B"><path d="M4 5.5A2 2 0 016 3.5h5v17H6a2 2 0 01-2-2zM20 5.5a2 2 0 00-2-2h-5v17h5a2 2 0 002-2z"/></svg>
+        <div class="mono">Participant record &middot; live</div>
+        <div style="margin-left:auto" class="chip chip-green" title=""><span class="dot pulse"></span>Matched</div>
+      </div>
+      <div class="recard-body">
+        <div style="display:flex;align-items:baseline;gap:12px;margin-bottom:14px">
+          <h3 style="font-size:26px">Shalauddin, Ethan</h3>
+          <span class="code" id="heroCode">BL-2026-0002</span>
+        </div>
+        <div class="field"><span>Date of birth</span><b>05/26/2013</b></div>
+        <div class="field"><span>Programs</span><b>Main &middot; SCSE</b></div>
+        <div class="field"><span>Home school</span><b>Stamford Charter School for Excellence</b></div>
+        <div class="field"><span>Preferred language</span><b>English</b></div>
+        <div class="thread" id="heroThread"></div>
+        <div class="stamp">Agreement on file</div>
+      </div>
+    </div>
+  </div>
+</div></section>
+
+<div class="band"><div class="wrap band-in">
+  <div><b>190+</b><span>LANGUAGES AUTO-TRANSLATED</span></div>
+  <div><b>0</b><span>RE-SUBMITTED AGREEMENTS TO MOVE PROGRAMS</span></div>
+  <div><b>3 min</b><span>AVG. TIME TO ISSUE &amp; SEND A FAMILY CODE</span></div>
+  <div><b>99.2%</b><span>FAMILY CONTACTABILITY IN 6 WEEKS</span></div>
+  <div><b>1</b><span>PLACE WHERE A CODE IS EVER CREATED</span></div>
+</div></div>
+
+<section class="sec" id="platform"><div class="wrap">
+  <div class="sec-head reveal">
+    <span class="eyebrow">The platform</span>
+    <h2>Everything ParentSquare does for a district — rebuilt for a program that isn't one.</h2>
+    <p>Districts get a student information system to lean on. Beyond Limits doesn't. So the identifier, the roster,
+      the agreement, the message and the attendance rule all live here, in one place, under your own name.</p>
+  </div>
+  <div class="cat">
+    <article class="sp7 reveal"><span class="tag">Core</span>
+      <svg class="ic" viewBox="0 0 24 24"><path d="M3 6.5A2.5 2.5 0 015.5 4h4A2.5 2.5 0 0112 6.5v13H5.5A2.5 2.5 0 013 17zM21 6.5A2.5 2.5 0 0018.5 4h-4A2.5 2.5 0 0012 6.5v13h6.5a2.5 2.5 0 002.5-2.5z"/></svg>
+      <span class="num">01</span><h3>Family Records &amp; Participant Codes</h3>
+      <p>One row per family, however many programs they join and however many times they sign. The list is the only place a code
+        is ever minted — so the calendar, the messages and ParentSquare all point at the same stable identity.
+        Names, birthdays, addresses, language and income stay in one locked ledger with a full change history.</p></article>
+    <article class="sp5 reveal"><span class="tag">Comms</span>
+      <svg class="ic" viewBox="0 0 24 24"><path d="M21 11.5a8.4 8.4 0 01-9 8.4 9 9 0 01-3.9-.9L3 21l1.9-4.9A8.4 8.4 0 013 11.5 8.4 8.4 0 0112 3a8.4 8.4 0 019 8.5z"/></svg>
+      <span class="num">02</span><h3>Messaging that reaches every family</h3>
+      <p>Text, email, voice and in-app in one send — auto-translated into each family's language, with no login, no app and no
+        password to forget. Scheduled reminders, RSVPs, read receipts and a per-family delivery trail.</p></article>
+    <article class="sp4 reveal"><span class="tag">Automation</span>
+      <svg class="ic" viewBox="0 0 24 24"><path d="M12 7v5l3 2M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+      <span class="num">03</span><h3>Missed-session recovery</h3>
+      <p>Rules you write in plain language — "if a scholar misses 2 of 5 sessions, text the family; at 4, call; at 5, the tutor
+        gets a check-in task." Nothing fires twice, nothing gets forgotten.</p></article>
+    <article class="sp3 reveal"><span class="tag">Intake</span>
+      <svg class="ic" viewBox="0 0 24 24"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg>
+      <span class="num">04</span><h3>Onboarding &amp; agreements</h3>
+      <p>A QR code, a warm three-minute orientation, a signed agreement, a code — in one flow. One signature per program,
+        never a re-submission to move tracks.</p></article>
+    <article class="sp5 reveal"><span class="tag">Operations</span>
+      <svg class="ic" viewBox="0 0 24 24"><path d="M8 4h8a2 2 0 012 2v14l-6-3-6 3V6a2 2 0 012-2z"/></svg>
+      <span class="num">05</span><h3>Attendance &amp; sessions</h3>
+      <p>Check a scholar in by typing four digits of their code. Track streaks, no-shows, room capacity and tutor hours —
+        then turn all of it into the numbers a grant application actually wants.</p></article>
+    <article class="sp7 reveal"><span class="tag">Migration</span>
+      <svg class="ic" viewBox="0 0 24 24"><path d="M4 7h11l-3-3M20 17H9l3 3M20 7l-3-3M4 17l3 3"/></svg>
+      <span class="num">06</span><h3>Out to ParentSquare, cleanly</h3>
+      <p>Remind is folding into ParentSquare and your families aren't in a district, so the school-assigned number isn't available.
+        Your participant code <i>is</i> the identifier — export it in ParentSquare's import shape, validate every row before you
+        upload, and keep your own copy authoritative.</p></article>
+  </div>
+</div></section>
+
+<div class="quoteband"><div class="wrap" style="padding:52px 0">
+  <div class="pgrid reveal">
+    <figure class="span2"><img src="assets/photo-tutoring.jpg" alt="One-to-one tutoring at the Long Ridge Road headquarters">
+      <figcaption>Long Ridge Road — one-to-one tutoring rooms, Chromebooks, and a lounge families actually stay in.</figcaption></figure>
+    <figure><img src="assets/photo-group.jpg" alt="Beyond Limits scholars together"><figcaption>113 active families across four tracks.</figcaption></figure>
+    <figure><img src="assets/photo-room.jpg" alt="A tutoring session in progress"><figcaption>Peer-to-peer, upperclassmen-led.</figcaption></figure>
+  </div>
+</div></div>
+
+<section class="sec" id="codes"><div class="wrap">
+  <div class="sec-head reveal">
+    <span class="eyebrow">Priority one</span>
+    <h2>The participant code, handled properly.</h2>
+    <p>Today nine codes exist and roughly 105 families have none. The fix isn't a script that writes a number into column 37 —
+      it's a single list that decides, once, what a family <i>is</i>.</p>
+  </div>
+  <div class="case reveal">
+    <div>
+      <div class="sub-card">
+        <div class="chip chip-navy" style="margin-bottom:10px">PA (Main) &middot; row 105</div>
+        <div class="who">Shalauddin, Ethan</div>
+        <div class="meta">Submitted 3 Jun 2026 &middot; DOB 05/26/2013 &middot; 61 West Glen Drive</div>
+        <div style="margin-top:12px"><span class="code">BLA-2026-0002</span></div>
+      </div>
+      <div class="sub-card" style="margin-top:14px;border-color:#F2CFC9;background:var(--red-050)">
+        <div class="chip chip-red" style="margin-bottom:10px">PA (SCSE) &middot; row 16 &middot; second identity</div>
+        <div class="who">Shalauddin, Ethan</div>
+        <div class="meta">Submitted 6 Jun 2026 &middot; DOB 05/26/2013 &middot; same household, different phone</div>
+        <div style="margin-top:12px"><span class="code" style="background:var(--red-050);border-color:#F2CFC9;color:var(--red)">BLA20260003</span></div>
+      </div>
+    </div>
+    <div class="converge"><span class="lbl">name + date<br>of birth</span><span class="arrow">&#10230;&#10230;</span><span class="lbl">one<br>identity</span></div>
+    <div class="merged">
+      <div class="eyebrow" style="color:var(--green)">Merged</div>
+      <div class="who" style="font-family:var(--f-d);font-size:21px;margin:8px 0 4px">Shalauddin, Ethan</div>
+      <div style="font-size:13px;color:#3C6B54;margin-bottom:12px">Main + SCSE on one row. Both agreements kept as signed.</div>
+      <div class="mono" style="font-size:22px;font-weight:700;letter-spacing:.03em;color:var(--navy)">BL-2026-0002</div>
+      <div style="font-size:12px;color:var(--muted);margin-top:8px">Permanent. Never changes when a family changes track.</div>
+    </div>
+  </div>
+  <div class="cat" style="margin-top:22px">
+    <article class="sp4 reveal"><span class="num">MATCH</span>
+      <h3 style="font-size:19px;margin-top:8px">No match &rarr; new family</h3>
+      <p>First submission from a household mints the next code in one series for the whole program: <span class="mono">BL-2026-0113</span>.</p></article>
+    <article class="sp4 reveal"><span class="num">MATCH</span>
+      <h3 style="font-size:19px;margin-top:8px">Clear match &rarr; keep the code</h3>
+      <p>The family keeps the identity they have; the new program is added to their row. No second number, no second agreement.</p></article>
+    <article class="sp4 reveal"><span class="num">HOLD</span>
+      <h3 style="font-size:19px;margin-top:8px">Unclear &rarr; held for Andy</h3>
+      <p>Same name, different birthday, or a sibling with the same phone — it parks in a review queue instead of guessing.
+        Guessing where a child's identifier goes is how codes end up in the wrong column.</p></article>
+  </div>
+  <p style="margin-top:26px;font-size:14.5px;color:var(--muted);max-width:80ch">Two families still need a human decision —
+    <b>Annabella Rojas</b> (Main 8 Nov 2024, SCSE 5 Dec 2024) and <b>Anthony Lopez</b> (Main twice, plus a copied Starfish row).
+    Both are sitting in the review queue with their evidence side by side.</p>
+</div></section>
+
+<section class="sec quoteband" id="programs"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow">The roster</span><h2>Four tracks on one shelf. A fifth nobody has explained.</h2>
+    <p>Main &middot; Horizons &middot; SCSE &middot; Starfish — and the thirteen 9th and 10th graders filed under "BFFS" in the dashboard
+      that appears in none of the four forms. The system flags it rather than hiding it.</p></div>
+  <div class="shelf reveal">
+    <div class="spine"><div class="cnt">110</div><div class="nm">Main</div><div class="sub">110 rows in the PA (Main) form tab</div></div>
+    <div class="spine"><div class="cnt">21</div><div class="nm">Horizons</div><div class="sub">21 rows &middot; codes added Jul 2026</div></div>
+    <div class="spine"><div class="cnt">17</div><div class="nm">SCSE</div><div class="sub">17 rows &middot; one stray 38th column</div></div>
+    <div class="spine"><div class="cnt">4</div><div class="nm">Starfish</div><div class="sub">4 pasted rows &middot; needs restructure</div></div>
+    <div class="spine"><div class="cnt">13</div><div class="nm">BFFS</div><div class="sub">13 rows &middot; unmapped &middot; 9th &amp; 10th grade</div></div>
+  </div>
+</div></section>
+
+<section class="sec" id="attendance"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow">The automation Andy asked for</span>
+    <h2>"Message them if they miss X sessions."</h2>
+    <p>You set the thresholds once. The system watches every scholar's attendance, works out who has quietly stopped coming,
+      and sends the right message to the right person in the right language — then tells you what it did.</p></div>
+  <div class="ladder reveal">
+    <div class="rung"><div class="n">2</div><div><div class="t">Text the family</div>
+      <div class="d">Friendly nudge in their own language with a one-tap way to reschedule. Sent 9:00am, never twice in a day.</div></div>
+      <span class="chip chip-green">Automatic</span></div>
+    <div class="rung"><div class="n">3</div><div><div class="t">Add a voice call request</div>
+      <div class="d">Lands in the program phone queue with the scholar's code, tutor and last session date attached.</div></div>
+      <span class="chip chip-gold">Needs a human</span></div>
+    <div class="rung"><div class="n">4</div><div><div class="t">Tutor check-in task</div>
+      <div class="d">The tutor who knows the scholar gets a same-week task: reach out before the next session.</div></div>
+      <span class="chip chip-amber">Escalated</span></div>
+    <div class="rung"><div class="n">5</div><div><div class="t">Andy's follow-up list</div>
+      <div class="d">Five missed sessions puts the family on the Friday call sheet with the whole history on one screen.</div></div>
+      <span class="chip chip-red">Attention</span></div>
+  </div>
+</div></section>
+
+<section class="sec quoteband" id="migration"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow">Remind is going away</span>
+    <h2>The migration, without the headache.</h2>
+    <p>Beyond Limits isn't in the district, so the school-assigned number isn't available. Your participant code becomes the
+      identifier ParentSquare accepts — which is exactly why the codes have to be right first.</p></div>
+  <div class="flow reveal">
+    <div class="node"><span class="eyebrow">Step 1</span><h3 style="font-size:19px;margin:8px 0">Clean the list</h3>
+      <p style="font-size:13.6px;color:var(--muted);margin:0">39 families Andy removed, test rows and empty tabs gone, Starfish restructured, the stray SCSE column retired.</p></div>
+    <div class="arrowsep">&rarr;</div>
+    <div class="node"><span class="eyebrow">Step 2</span><h3 style="font-size:19px;margin:8px 0">One code per family</h3>
+      <p style="font-size:13.6px;color:var(--muted);margin:0">Back-fill the 105 missing codes in the single <span class="mono">BL-2026-####</span> series, program in its own editable column.</p></div>
+    <div class="arrowsep">&rarr;</div>
+    <div class="node here"><span class="eyebrow">Step 3</span><h3 style="font-size:19px;margin:8px 0">Export &amp; validate</h3>
+      <p style="font-size:13.6px;color:var(--muted);margin:0">A ParentSquare-shaped file with your ID field mapped, every row checked for duplicates and dead phone numbers before upload.</p></div>
+    <div class="arrowsep">&rarr;</div>
+    <div class="node"><span class="eyebrow">Step 4</span><h3 style="font-size:19px;margin:8px 0">Switch the channel</h3>
+      <p style="font-size:13.6px;color:var(--muted);margin:0">Families get the transition message in their language. Remind goes quiet without a single family lost.</p></div>
+  </div>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <div class="sec-head reveal"><span class="eyebrow">For families</span>
+    <h2>The parent side has to feel like a note home, not a portal.</h2>
+    <p>No app, no password, no login wall — a text arrives, the page opens in Spanish, and the RSVP takes five seconds.</p></div>
+  <div class="pgrid reveal" style="grid-template-columns:1fr 1fr 1fr;grid-auto-rows:230px">
+    <figure><img src="assets/photo-scholar-annabella.png" alt="Annabella, 5th grade"><figcaption>Annabella, 5th grade — Rotary Scholarship 2025</figcaption></figure>
+    <figure><img src="assets/photo-scholar-danna.jpg" alt="A Beyond Limits scholar"><figcaption>Danna — Main roster, two years in.</figcaption></figure>
+    <figure><img src="assets/photo-anthony.jpg" alt="Anthony Lopez"><figcaption>Anthony Lopez — in the duplicate review queue today.</figcaption></figure>
+  </div>
+</div></section>
+
+<section class="sec" style="padding-top:0"><div class="wrap">
+  <div style="display:flex;gap:40px;flex-wrap:wrap;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:var(--r-lg);padding:38px;box-shadow:var(--sh-2)" class="reveal">
+    <div style="max-width:48ch">
+      <span class="eyebrow">Walk it yourself</span>
+      <h2 style="font-size:32px;margin:10px 0 8px">Open the console with Andy's real numbers in it.</h2>
+      <p style="color:var(--muted);margin:0;font-size:15px">113 families, 9 existing codes, the two duplicate identities, the four broken Starfish rows.
+        Nothing invented — including the parts that are still on fire.</p>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <a class="btn btn-navy btn-lg" href="studio.html#/records">Open the console</a>
+      <a class="btn btn-ghost btn-lg" href="family.html">Family app</a>
+    </div>
+  </div>
+</div></section>
+
+<div class="quoteband"><div class="wrap" style="padding:44px 0">
+  <span class="eyebrow reveal" style="display:block;margin-bottom:22px">With gratitude to our sponsors</span>
+  <div class="sponsors reveal">
+    <img src="assets/logo-nccf.jpg" alt="Near &amp; Far Aid">
+    <img src="assets/logo-rotary.png" alt="Stamford Rotary Trust Fund">
+    <span style="font-family:var(--f-d);font-size:19px;color:var(--navy)">New Canaan Community Foundation</span>
+  </div>
+</div></div>
+
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div>
+      <div class="lockup-plate" style="display:inline-flex;margin-bottom:16px"><img src="assets/bl-logo.png" alt="Beyond Limits Academics"></div>
+      <p style="max-width:34ch;color:#AFC0D8;font-size:13.6px">Leveling the academic playing field for learners in lower Fairfield County —
+        free one-to-one tutoring and informal mentoring from our headquarters on Long Ridge Road, Stamford, CT.</p>
+    </div>
+    <div><h4>Program</h4><ul><li><a href="#platform">Platform</a></li><li><a href="#codes">Participant codes</a></li>
+      <li><a href="#programs">Tracks</a></li><li><a href="#attendance">Attendance recovery</a></li></ul></div>
+    <div><h4>Families</h4><ul><li><a href="family.html">Family app</a></li><li><a href="#platform">Translate &amp; accessibility</a></li>
+      <li><a href="#migration">Remind &rarr; ParentSquare</a></li></ul></div>
+    <div><h4>Contact</h4><ul><li>Andy Sklover &middot; Co-founder</li><li>Long Ridge Road, Stamford CT</li>
+      <li><a href="https://www.peaceyouthct.org/beyondlimits">peaceyouthct.org/beyondlimits</a></li></ul></div>
+  </div>
+  <div class="fb"><span>Beyond Limits Connect — built for the Beyond Limits Academic Program.</span>
+    <span>Demonstration system with sample data. Not affiliated with ParentSquare.</span></div>
+</div></footer>
+
+<script>
+/* hero record threads */
+const beats=[
+ ['09:14','New agreement submitted from the Starfish QR code',''],
+ ['09:14','Matched on name + date of birth &mdash; no new code issued','ok'],
+ ['09:14','SCSE added to the family row. Code stays BL-2026-0002','ok'],
+ ['09:15','Held 1 row: Lopez, Anthony &mdash; same name, two birthdays','hold']
+];
+const t=document.getElementById('heroThread');
+beats.forEach((b,i)=>{const d=document.createElement('div');d.className='row '+(b[2]||'');
+  d.style.animationDelay=(0.5+i*0.85)+'s';d.innerHTML='<span class="k">'+b[0]+'</span><span>'+b[1]+'</span>';t.appendChild(d);});
+
+/* reveal + animated meters */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3)*70+'ms';io.observe(el);});
+</script>
+</body></html>
