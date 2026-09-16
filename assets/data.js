@@ -53,10 +53,17 @@ window.BL = (function(){
     const progs=p.split('+'); const grade = progs.includes('bffs')?9+Math.floor(rnd()*2):4+Math.floor(rnd()*7);
     mk({last:pick(LAST),first:pick(FIRST),dob:String(1+Math.floor(rnd()*12)).padStart(2,'0')+'/'+String(1+Math.floor(rnd()*27)).padStart(2,'0')+'/'+(2026-grade-5),
         grade,progs,codes:[null],flag:'none'});}});
-  // nine codes exist in the real file (two of them our own test rows)
+  /* nine codes exist in the live file. The two real ones keep the numbers from the record:
+     Rojas = BL-2026-0001, Shalauddin = BL-2026-0002. Anthony Lopez is deliberately left UNCODED
+     because his record is still waiting on Andy's decision. */
   let seq=1;
-  families.filter(f=>f.codes&&f.codes[0]).forEach(f=>{f.codes[0]='BL-2026-'+String(seq++).padStart(4,'0');});
-  families.filter(f=>!f.codes||!f.codes[0]).slice(0,7).forEach(f=>{f.codes[0]='BL-2026-'+String(seq++).padStart(4,'0');});
+  families.forEach(f=>{
+    if(f.real&&f.last==='Rojas') f.codes[0]='BL-2026-0001';
+    else if(f.real&&f.last==='Shalauddin') f.codes[0]='BL-2026-0002';
+    else if(f.flag==='decision') f.codes=[null];
+  });
+  seq=3;
+  families.filter(f=>!f.codes[0]&&f.flag!=='decision'&&!f.real).slice(0,7).forEach(f=>{f.codes[0]='BL-2026-'+String(seq++).padStart(4,'0');});
   const TEST=[{last:'Test',first:'Row (ours)',code:'BL-2026-0008',dupe:true},{last:'Test',first:'Row (ours)',code:'BL-2026-0009',dupe:true}];
 
   const coded=families.filter(f=>f.codes&&f.codes[0]).length;

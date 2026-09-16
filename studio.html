@@ -29,7 +29,7 @@
   <a class="rnav" data-v="insights"><svg class="ic" viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Insights</a>
   <a class="rnav" data-v="settings"><svg class="ic" viewBox="0 0 24 24"><path d="M12 15a3 3 0 100-6 3 3 0 000 6zM19.4 15a1.7 1.7 0 00.3 1.9l.1.1a2 2 0 11-2.8 2.8l-.1-.1a1.7 1.7 0 00-2.9 1.2V21a2 2 0 11-4 0v-.1A1.7 1.7 0 006 19.4l-.1.1a2 2 0 11-2.8-2.8l.1-.1A1.7 1.7 0 003 13.7H3a2 2 0 110-4h.1A1.7 1.7 0 004.6 6L4.5 5.9a2 2 0 112.8-2.8l.1.1A1.7 1.7 0 0010 3.1V3a2 2 0 114 0v.1a1.7 1.7 0 002.9 1.2l.1-.1a2 2 0 112.8 2.8l-.1.1a1.7 1.7 0 001.2 2.9H21a2 2 0 110 4h-.1a1.7 1.7 0 00-1.5 1z"/></svg>Settings</a>
 
-  <div class="rail-foot"><b>Data ownership</b>Roster + script currently sit on a personal Google account. Transfer outstanding.</div>
+  <div class="rail-foot"><b>Data ownership</b>Roster &amp; script sit on a personal Google account.</div>
 </aside>
 
 <div class="main">
@@ -162,7 +162,7 @@ function vRecords(){
   <div style="display:grid;grid-template-columns:1fr 330px;gap:18px;align-items:start">
     <div class="card" style="overflow:hidden">
       <div class="card-h" style="flex-wrap:wrap;gap:9px">
-        <h3>Family records</h3>
+        <h3>The ledger</h3>
         <span class="mono" style="color:var(--muted)">${rows.length} of ${S.families} shown</span>
         <div style="margin-left:auto;display:flex;gap:8px;flex-wrap:wrap">
           ${[['all','All'],['uncoded','Needs a code'],['dup','Duplicates'],['main','Main'],['horizons','Horizons'],['scse','SCSE'],['starfish','Starfish'],['bffs','BFFS']]
@@ -181,7 +181,7 @@ function vRecords(){
             <td>${f.grade}</td>
             <td>${f.lang}</td>
             <td style="font-size:12.6px;color:var(--muted)">${esc(f.school)}</td>
-            <td>${f.sessions} <span style="color:var(--muted);font-size:12px">/ ${f.missed} missed</span></td></tr>`).join('')}
+            <td style="white-space:nowrap">${f.sessions} <span style="color:var(--muted);font-size:12px">/ ${f.missed} missed</span></td></tr>`).join('')}
           </tbody>
         </table>
       </div>
